@@ -1,0 +1,130 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cummins Alumni Portal - Alumni Posts</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-gray-800 p-4 shadow-md sticky top-0">
+    <h1 class="text-2xl font-bold text-purple-400 text-center">Cummins Alumni Portal-Post Yorself</h1>
+  </header>
+
+  <!-- Form Section -->
+  <section class="p-6 max-w-3xl mx-auto">
+    <h2 class="text-xl font-semibold text-purple-300 mb-4">Add Alumni Post</h2>
+    <form id="alumniForm" class="bg-gray-800 p-6 rounded-xl shadow-lg space-y-4">
+      <input type="text" id="name" placeholder="Alumni Name" class="w-full p-2 rounded bg-gray-700 text-white">
+      <input type="text" id="company" placeholder="Company Name" class="w-full p-2 rounded bg-gray-700 text-white">
+      <input type="email" id="email" placeholder="Email Address" class="w-full p-2 rounded bg-gray-700 text-white">
+      <input type="file" id="image" accept="image/*" class="w-full text-gray-300">
+      <input type="text" id="experience" placeholder="Experience (e.g. 5 years)" class="w-full p-2 rounded bg-gray-700 text-white">
+      <input type="text" id="skills" placeholder="Skills (comma separated)" class="w-full p-2 rounded bg-gray-700 text-white">
+      <button type="submit" class="w-full bg-purple-600 hover:bg-purple-500 p-2 rounded-lg">Upload Post</button>
+    </form>
+  </section>
+
+  <!-- Search Bar -->
+  <section class="p-6 max-w-3xl mx-auto">
+    <input type="text" id="searchInput" placeholder="Search Alumni by name, company or skill..."
+      class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600">
+  </section>
+
+  <!-- Alumni Cards Section -->
+  <section class="p-6">
+    <h2 class="text-xl font-semibold text-purple-300 mb-4">Alumni Posts</h2>
+    <div id="alumniCards" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      
+      <!-- Example Alumni Card 1 -->
+      <div class="alumni-card bg-gray-800 p-4 rounded-xl shadow-lg" data-search="rahul patil tcs java leadership">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Alumni" class="w-24 h-24 rounded-full mx-auto">
+        <h3 class="text-lg font-bold mt-3">Rahul Patil</h3>
+        <p class="text-gray-300">Company: TCS</p>
+        <p class="text-gray-300">Email: rahul.patil@tcs.com</p>
+        <p class="text-gray-300">Experience: 6 years</p>
+        <p class="text-gray-300">Skills: Java, Spring, Leadership</p>
+      </div>
+
+      <!-- Example Alumni Card 2 -->
+      <div class="alumni-card bg-gray-800 p-4 rounded-xl shadow-lg" data-search="sneha joshi infosys python ai">
+        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Alumni" class="w-24 h-24 rounded-full mx-auto">
+        <h3 class="text-lg font-bold mt-3">Sneha Joshi</h3>
+        <p class="text-gray-300">Company: Infosys</p>
+        <p class="text-gray-300">Email: sneha.j@infosys.com</p>
+        <p class="text-gray-300">Experience: 4 years</p>
+        <p class="text-gray-300">Skills: Python, AI, Machine Learning</p>
+      </div>
+
+      <!-- Example Alumni Card 3 -->
+      <div class="alumni-card bg-gray-800 p-4 rounded-xl shadow-lg" data-search="aditya deshmukh microsoft cloud devops">
+        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Alumni" class="w-24 h-24 rounded-full mx-auto">
+        <h3 class="text-lg font-bold mt-3">Aditya Deshmukh</h3>
+        <p class="text-gray-300">Company: Microsoft</p>
+        <p class="text-gray-300">Email: aditya.d@microsoft.com</p>
+        <p class="text-gray-300">Experience: 7 years</p>
+        <p class="text-gray-300">Skills: Cloud, Azure, DevOps</p>
+      </div>
+
+      <!-- Example Alumni Card 4 -->
+      <div class="alumni-card bg-gray-800 p-4 rounded-xl shadow-lg" data-search="priya kulkarni wipro frontend react ui">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Alumni" class="w-24 h-24 rounded-full mx-auto">
+        <h3 class="text-lg font-bold mt-3">Priya Kulkarni</h3>
+        <p class="text-gray-300">Company: Wipro</p>
+        <p class="text-gray-300">Email: priya.k@wipro.com</p>
+        <p class="text-gray-300">Experience: 3 years</p>
+        <p class="text-gray-300">Skills: Frontend, React, UI/UX</p>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // Handle Form Submit
+    document.getElementById("alumniForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const company = document.getElementById("company").value;
+      const email = document.getElementById("email").value;
+      const experience = document.getElementById("experience").value;
+      const skills = document.getElementById("skills").value;
+      const imageInput = document.getElementById("image");
+      let imgURL = "https://via.placeholder.com/150"; // default
+
+      if (imageInput.files && imageInput.files[0]) {
+        imgURL = URL.createObjectURL(imageInput.files[0]);
+      }
+
+      const card = document.createElement("div");
+      card.className = "alumni-card bg-gray-800 p-4 rounded-xl shadow-lg";
+      card.setAttribute("data-search", `${name.toLowerCase()} ${company.toLowerCase()} ${skills.toLowerCase()}`);
+      card.innerHTML = `
+        <img src="${imgURL}" alt="Alumni" class="w-24 h-24 rounded-full mx-auto">
+        <h3 class="text-lg font-bold mt-3">${name}</h3>
+        <p class="text-gray-300">Company: ${company}</p>
+        <p class="text-gray-300">Email: ${email}</p>
+        <p class="text-gray-300">Experience: ${experience}</p>
+        <p class="text-gray-300">Skills: ${skills}</p>
+      `;
+      document.getElementById("alumniCards").appendChild(card);
+      e.target.reset();
+    });
+
+    // Smart Search
+    document.getElementById("searchInput").addEventListener("input", function () {
+      const query = this.value.toLowerCase();
+      document.querySelectorAll(".alumni-card").forEach(card => {
+        if (card.getAttribute("data-search").includes(query)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

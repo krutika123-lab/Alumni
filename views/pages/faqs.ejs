@@ -1,0 +1,352 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<head>
+  
+  <title>FAQs – Cummins College of Engineering, Nagpur | Alumni Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="color-scheme" content="dark" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ring: 0 0% 100%; }
+    * { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-100">
+  <!-- Page container -->
+  <div class="min-h-screen">
+    <!-- Header -->
+    <header class="sticky top-0 z-40 backdrop-blur bg-gray-950/70 border-b border-gray-800">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="h-9 w-9 rounded-2xl bg-fuchsia-600/20 ring-1 ring-fuchsia-500/40 flex items-center justify-center">
+            <span class="text-fuchsia-300 font-bold">CA</span>
+          </div>
+          <div>
+            <h1 class="text-lg md:text-xl font-semibold">Cummins College of Engineering, Nagpur</h1>
+            <p class="text-xs text-gray-400 -mt-0.5">Alumni Portal • FAQs</p>
+          </div>
+        </div>
+        <a href="#importance" class="hidden sm:inline-flex text-xs px-3 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700">Why this portal matters</a>
+      </div>
+    </header>
+
+    <!-- Hero / Intro -->
+    <section class="max-w-6xl mx-auto px-4 py-8 md:py-12">
+      <div class="grid md:grid-cols-5 gap-6 items-start">
+        <div class="md:col-span-3">
+          <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Frequently Asked Questions</h2>
+          <p class="mt-2 text-gray-400">Quick answers for students and alumni using the Cummins Alumni Portal. Use the search or categories to find what you need.</p>
+          <div class="mt-4 flex flex-col sm:flex-row gap-3">
+            <div class="relative flex-1">
+              <input id="search" type="search" placeholder="Search questions (e.g., mentorship, placements, jobs)" class="w-full rounded-2xl bg-gray-900 border border-gray-800 focus:border-fuchsia-500/50 focus:ring-4 focus:ring-fuchsia-500/10 px-4 py-3 text-sm placeholder:text-gray-500 outline-none" />
+              <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">⌘K</span>
+            </div>
+            <div class="flex gap-2 overflow-x-auto">
+              <button data-filter="all" class="filter-btn rounded-2xl px-4 py-2 text-sm bg-gray-800 border border-gray-700">All</button>
+              <button data-filter="account" class="filter-btn rounded-2xl px-4 py-2 text-sm bg-gray-900 border border-gray-800">Account</button>
+              <button data-filter="networking" class="filter-btn rounded-2xl px-4 py-2 text-sm bg-gray-900 border border-gray-800">Networking</button>
+              <button data-filter="placements" class="filter-btn rounded-2xl px-4 py-2 text-sm bg-gray-900 border border-gray-800">Placements</button>
+              <button data-filter="careers" class="filter-btn rounded-2xl px-4 py-2 text-sm bg-gray-900 border border-gray-800">Careers</button>
+              <button data-filter="events" class="filter-btn rounded-2xl px-4 py-2 text-sm bg-gray-900 border border-gray-800">Events</button>
+              <button data-filter="support" class="filter-btn rounded-2xl px-4 py-2 text-sm bg-gray-900 border border-gray-800">Support</button>
+            </div>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <div class="rounded-2xl bg-gradient-to-b from-gray-900 to-gray-950 border border-gray-800 p-5">
+            <p class="text-sm text-gray-300">Can’t find what you’re looking for?</p>
+            <div class="mt-3 grid grid-cols-2 gap-2 text-sm">
+              <a class="group rounded-xl border border-gray-800 bg-gray-900 p-3 hover:border-fuchsia-500/40" href="#contact">
+                <div class="font-medium">Contact Support</div>
+                <div class="text-gray-500">We’ll get back within 2–3 working days.</div>
+              </a>
+              <a class="group rounded-xl border border-gray-800 bg-gray-900 p-3 hover:border-fuchsia-500/40" href="#events">
+                <div class="font-medium">Upcoming Events</div>
+                <div class="text-gray-500">Meet peers & mentors.</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="max-w-6xl mx-auto px-4 pb-12">
+      <div id="faqList" class="space-y-3">
+        <!-- Each item uses details/summary for native accessibility -->
+
+        <!-- 1 -->
+        <details class="faq-item group rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden" data-tags="account">
+          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 hover:bg-gray-850">
+            <h3 class="font-medium">How do I create an account on the Alumni Portal?</h3>
+            <span class="ml-4 text-gray-500 group-open:rotate-180 transition">▾</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300">
+            Visit the portal’s sign-up page, enter your full name, graduating batch, programme, and a personal email. You’ll receive a verification link. After verifying, complete your profile with your current city, employer, and areas where you can help (mentoring, referrals, talks).
+          </div>
+        </details>
+
+        <!-- 2 -->
+        <details class="faq-item group rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden" data-tags="account">
+          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 hover:bg-gray-850">
+            <h3 class="font-medium">I didn’t receive the email verification link. What should I do?</h3>
+            <span class="ml-4 text-gray-500 group-open:rotate-180 transition">▾</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300">
+            Check the spam folder and ensure you entered the correct email. If the link expired, use “Resend Verification” on the login page. Still stuck? Write to <a href="mailto:alumni.support@cumminsnagpur.edu" class="text-fuchsia-400 underline">alumni.support@cumminsnagpur.edu</a> with your full name and batch.
+          </div>
+        </details>
+
+        <!-- 3 -->
+        <details class="faq-item group rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden" data-tags="account">
+          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 hover:bg-gray-850">
+            <h3 class="font-medium">How do I update my profile and privacy settings?</h3>
+            <span class="ml-4 text-gray-500 group-open:rotate-180 transition">▾</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300">
+            Open <em>My Profile → Edit</em> to update photo, headline, skills, and preferences. Under <em>Privacy</em>, choose whether your email and phone are visible to verified alumni only, or hidden from everyone.
+          </div>
+        </details>
+
+        <!-- 4 -->
+        <details class="faq-item group rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden" data-tags="networking">
+          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 hover:bg-gray-850">
+            <h3 class="font-medium">How can I find and connect with alumni working in specific companies or cities?</h3>
+            <span class="ml-4 text-gray-500 group-open:rotate-180 transition">▾</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300">
+            Use <em>Alumni Directory</em> filters for company, location, domain, and batch. You can send a connection request or a direct message if the alum has enabled DMs.
+          </div>
+        </details>
+
+        <!-- 5 -->
+        <details class="faq-item group rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden" data-tags="networking support">
+          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 hover:bg-gray-850">
+            <h3 class="font-medium">How does the mentorship feature work?</h3>
+            <span class="ml-4 text-gray-500 group-open:rotate-180 transition">▾</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300">
+            In <em>Mentorship</em>, students can request guidance by topic (e.g., GATE prep, higher studies, product interviews). Mentors set their availability; sessions can be virtual or in-person. After a session, both sides can leave feedback to improve matching.
+          </div>
+        </details>
+
+        <!-- 6 -->
+        <details class="faq-item group rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden" data-tags="placements careers">
+          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 hover:bg-gray-850">
+            <h3 class="font-medium">Where can I see career opportunities, internships, and referrals?</h3>
+            <span class="ml-4 text-gray-500 group-open:rotate-180 transition">▾</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300">
+            Visit the <em>Jobs & Referrals</em> board to view roles posted by alumni and partner companies. Filter by role, experience, and location. You can also enable email alerts for new openings that match your profile.
+          </div>
+        </details>
+
+        <!-- 7 -->
+        <details class="faq-item group rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden" data-tags="placements">
+          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 hover:bg-gray-850">
+            <h3 class="font-medium">Does the portal provide placement and interview preparation resources?</h3>
+            <span class="ml-4 text-gray-500 group-open:rotate-180 transition">▾</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300">
+            Yes. The <em>Placement Prep</em> hub contains past interview experiences from alumni, company-wise problem sets, resume templates, and mock interview sign-ups hosted by volunteers.
+          </div>
+        </details>
+
+        <!-- 8 -->
+        <details class="faq-item group rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden" data-tags="careers">
+          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 hover:bg-gray-850">
+            <h3 class="font-medium">Is there a GATE / M.Tech preparation section?</h3>
+            <span class="ml-4 text-gray-500 group-open:rotate-180 transition">▾</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300">
+            Under <em>Higher Studies & GATE</em>, you’ll find curated study plans, subject-wise notes shared by toppers, and alumni talks on strategy. You can also form study groups with peers.
+          </div>
+        </details>
+
+        <!-- 9 -->
+        <details class="faq-item group rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden" data-tags="events networking">
+          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 hover:bg-gray-850">
+            <h3 class="font-medium">How do I learn about reunions, webinars, and chapter meetups?</h3>
+            <span class="ml-4 text-gray-500 group-open:rotate-180 transition">▾</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300">
+            Check the <em>Events</em> calendar and subscribe to reminders. You can RSVP directly and see who else is attending. Post-event recordings and slides are available on the same page.
+          </div>
+        </details>
+
+        <!-- 10 -->
+        <details class="faq-item group rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden" data-tags="support account">
+          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 hover:bg-gray-850">
+            <h3 class="font-medium">How do I report an issue or request a new feature?</h3>
+            <span class="ml-4 text-gray-500 group-open:rotate-180 transition">▾</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300">
+            Use the <em>Help & Feedback</em> form from your profile menu. Attach screenshots if relevant. Critical issues are prioritized; you’ll receive status updates via email.
+          </div>
+        </details>
+
+        <!-- 11 -->
+        <details class="faq-item group rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden" data-tags="support account">
+          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 hover:bg-gray-850">
+            <h3 class="font-medium">Can non-verified users view alumni contact details?</h3>
+            <span class="ml-4 text-gray-500 group-open:rotate-180 transition">▾</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300">
+            No. Contact details are visible only to verified alumni and approved students. You can always hide your email/phone from everyone via <em>Privacy</em> settings.
+          </div>
+        </details>
+
+        <!-- 12 -->
+        <details class="faq-item group rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden" data-tags="networking careers placements">
+          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 hover:bg-gray-850">
+            <h3 class="font-medium">How can alumni contribute—mentoring, job postings, or guest lectures?</h3>
+            <span class="ml-4 text-gray-500 group-open:rotate-180 transition">▾</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300">
+            From <em>Give Back</em>, choose how you’d like to help: post roles/referrals, host an AMA or webinar, review resumes, or support scholarships. The team will coordinate logistics with you.
+          </div>
+        </details>
+
+        <!-- 13 -->
+        <details class="faq-item group rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden" data-tags="account support">
+          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 hover:bg-gray-850">
+            <h3 class="font-medium">I forgot my password. How do I reset it?</h3>
+            <span class="ml-4 text-gray-500 group-open:rotate-180 transition">▾</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300">
+            Click <em>Forgot Password</em> on the login page and enter your registered email. You’ll receive a link to set a new password. For security, links expire in 30 minutes.
+          </div>
+        </details>
+
+        <!-- 14 -->
+        <details class="faq-item group rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden" data-tags="careers placements">
+          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 hover:bg-gray-850">
+            <h3 class="font-medium">Can companies partner directly with the alumni network for hiring?</h3>
+            <span class="ml-4 text-gray-500 group-open:rotate-180 transition">▾</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300">
+            Yes. Recruiters can request access to the <em>Employer Portal</em> to publish roles and collaborate on campus drives. Alumni can also refer recruiters to the placement cell through the portal.
+          </div>
+        </details>
+
+        <!-- 15 -->
+        <details class="faq-item group rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden" data-tags="events support">
+          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 hover:bg-gray-850">
+            <h3 class="font-medium">Are recordings or resources available after webinars?</h3>
+            <span class="ml-4 text-gray-500 group-open:rotate-180 transition">▾</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300">
+            Yes. Event pages host recordings, slides, and key takeaways. If you RSVP’d, you’ll also receive an email with links.
+          </div>
+        </details>
+
+        <!-- 16 -->
+        <details class="faq-item group rounded-2xl border border-gray-800 bg-gray-900 overflow-hidden" data-tags="support account">
+          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 hover:bg-gray-850">
+            <h3 class="font-medium">Can I delete my account and data?</h3>
+            <span class="ml-4 text-gray-500 group-open:rotate-180 transition">▾</span>
+          </summary>
+          <div class="px-5 pb-5 text-gray-300">
+            Yes. From <em>Settings → Data & Privacy</em>, request deletion. You’ll receive a confirmation email and your profile will be removed within 7 working days.
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- Importance section -->
+    <section id="importance" class="border-t border-gray-900 bg-gray-950/60">
+      <div class="max-w-6xl mx-auto px-4 py-12">
+        <h2 class="text-xl md:text-2xl font-semibold">Why the Cummins Alumni Portal matters</h2>
+        <p class="mt-2 text-gray-400">Built for students and alumni of Cummins College of Engineering, Nagpur to accelerate careers and strengthen community.</p>
+        <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="rounded-2xl border border-gray-800 bg-gray-900 p-5">
+            <h3 class="font-medium">Career acceleration</h3>
+            <p class="mt-1 text-gray-400">Access alumni-backed referrals, role-specific prep, and insider guidance for placements and lateral moves.</p>
+          </div>
+          <div class="rounded-2xl border border-gray-800 bg-gray-900 p-5">
+            <h3 class="font-medium">Mentorship at scale</h3>
+            <p class="mt-1 text-gray-400">Structured 1:1 connects, group sessions, and office hours with domain experts across industries.</p>
+          </div>
+          <div class="rounded-2xl border border-gray-800 bg-gray-900 p-5">
+            <h3 class="font-medium">Stronger industry–campus bridge</h3>
+            <p class="mt-1 text-gray-400">Alumni partner with the placement cell to bring drives, hackathons, and capstone projects.</p>
+          </div>
+          <div class="rounded-2xl border border-gray-800 bg-gray-900 p-5">
+            <h3 class="font-medium">Lifelong network</h3>
+            <p class="mt-1 text-gray-400">Find peers by batch, city, or company; collaborate on startups, research, and community initiatives.</p>
+          </div>
+          <div class="rounded-2xl border border-gray-800 bg-gray-900 p-5">
+            <h3 class="font-medium">Knowledge repository</h3>
+            <p class="mt-1 text-gray-400">Central hub for interview experiences, tech talks, GATE/M.Tech prep, and alumni webinars.</p>
+          </div>
+          <div class="rounded-2xl border border-gray-800 bg-gray-900 p-5">
+            <h3 class="font-medium">Give back easily</h3>
+            <p class="mt-1 text-gray-400">Post jobs, fund scholarships, or volunteer time. Track your impact and student outcomes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="border-t border-gray-900">
+      <div class="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+        <div>
+          <div class="text-sm text-gray-400">Questions not covered here?</div>
+          <a href="mailto:alumni.support@cumminsnagpur.edu" class="text-sm text-fuchsia-300 underline">alumni.support@cumminsnagpur.edu</a>
+        </div>
+        <div class="text-xs text-gray-500">© <span id="year"></span> Cummins College of Engineering, Nagpur — Alumni Relations</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts: search + filter + keyboard shortcut -->
+  <script>
+    const searchInput = document.getElementById('search');
+    const faqList = document.getElementById('faqList');
+    const items = Array.from(document.querySelectorAll('.faq-item'));
+    const filterBtns = Array.from(document.querySelectorAll('.filter-btn'));
+
+    function normalize(str) { return str.toLowerCase().trim(); }
+
+    function applyFilters() {
+      const q = normalize(searchInput.value);
+      const active = document.querySelector('.filter-btn.bg-gray-800');
+      const tag = active ? active.dataset.filter : 'all';
+
+      items.forEach(item => {
+        const text = normalize(item.innerText);
+        const tags = (item.dataset.tags || '').split(' ');
+        const matchText = !q || text.includes(q);
+        const matchTag = (tag === 'all') || tags.includes(tag);
+        item.style.display = (matchText && matchTag) ? '' : 'none';
+      });
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('bg-gray-800', 'border-gray-700'));
+        filterBtns.forEach(b => b.classList.add('bg-gray-900', 'border-gray-800'));
+        btn.classList.remove('bg-gray-900', 'border-gray-800');
+        btn.classList.add('bg-gray-800', 'border-gray-700');
+        applyFilters();
+      });
+    });
+
+    // Keyboard shortcut for focus (Cmd/Ctrl + K)
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        searchInput.focus();
+      }
+    });
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

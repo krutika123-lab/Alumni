@@ -1,0 +1,118 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+  <title>Donations – Cummins Alumni Portal</title>
+  <script>
+    function openPaymentModal(projectName, amount) {
+      document.getElementById('payment-project').innerText = projectName;
+      document.getElementById('payment-amount').innerText = amount;
+      document.getElementById('paymentModal').classList.remove('hidden');
+    }
+
+    function closePaymentModal() {
+      document.getElementById('paymentModal').classList.add('hidden');
+    }
+  </script>
+</head>
+<body class="bg-gray-900 text-gray-100">
+
+  <!-- Header -->
+  <header class="p-6 bg-gray-800 shadow-lg flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-purple-400">Cummins Alumni Portal – Donations</h1>
+    
+  </header>
+
+  <!-- Donation Methods -->
+  <section class="p-6">
+    <h2 class="text-xl font-semibold text-purple-300 mb-4">Choose Your Donation Method</h2>
+    <div class="flex flex-wrap gap-4">
+      <button class="px-4 py-2 bg-purple-600 rounded-lg shadow hover:bg-purple-500">Paytm</button>
+      <button class="px-4 py-2 bg-purple-600 rounded-lg shadow hover:bg-purple-500">UPI</button>
+      <button class="px-4 py-2 bg-purple-600 rounded-lg shadow hover:bg-purple-500">PayPal</button>
+    </div>
+  </section>
+
+  <!-- Donation Cards -->
+  <section class="p-6">
+    <h2 class="text-xl font-semibold text-purple-300 mb-4">Support Causes & Companies</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Example Cards -->
+      <div class="bg-gray-800 p-4 rounded-xl shadow-lg">
+        <h3 class="text-lg font-bold text-purple-400">Startup Incubator</h3>
+        <p class="text-sm text-gray-300">Funding required for supporting student-led startups.</p>
+        <p class="mt-2 text-sm">Required: <span class="text-green-400 font-bold">₹5,00,000</span></p>
+        <button onclick="openPaymentModal('Startup Incubator','₹5,00,000')" class="mt-4 px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-500">Donate Now</button>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded-xl shadow-lg">
+        <h3 class="text-lg font-bold text-purple-400">Scholarship Fund</h3>
+        <p class="text-sm text-gray-300">Help meritorious students continue their studies.</p>
+        <p class="mt-2">Required: <span class="text-green-400 font-bold">₹10,00,000</span></p>
+        <button onclick="openPaymentModal('Scholarship Fund','₹10,00,000')" class="mt-4 px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-500">Donate Now</button>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded-xl shadow-lg">
+        <h3 class="text-lg font-bold text-purple-400">Lab Upgradation</h3>
+        <p class="text-sm text-gray-300">Modernize labs with new equipment and resources.</p>
+        <p class="mt-2">Required: <span class="text-green-400 font-bold">₹7,50,000</span></p>
+        <button onclick="openPaymentModal('Lab Upgradation','₹7,50,000')" class="mt-4 px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-500">Donate Now</button>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded-xl shadow-lg">
+        <h3 class="text-lg font-bold text-purple-400">Women Empowerment</h3>
+        <p class="text-sm text-gray-300">Support women-led initiatives and research projects.</p>
+        <p class="mt-2">Required: <span class="text-green-400 font-bold">₹3,00,000</span></p>
+        <button onclick="openPaymentModal('Women Empowerment','₹3,00,000')" class="mt-4 px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-500">Donate Now</button>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded-xl shadow-lg">
+        <h3 class="text-lg font-bold text-purple-400">Green Campus</h3>
+        <p class="text-sm text-gray-300">Contribute to eco-friendly infrastructure and solar panels.</p>
+        <p class="mt-2">Required: <span class="text-green-400 font-bold">₹8,00,000</span></p>
+        <button onclick="openPaymentModal('Green Campus','₹8,00,000')" class="mt-4 px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-500">Donate Now</button>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded-xl shadow-lg">
+        <h3 class="text-lg font-bold text-purple-400">Research Projects</h3>
+        <p class="text-sm text-gray-300">Fund innovative student and faculty research.</p>
+        <p class="mt-2">Required: <span class="text-green-400 font-bold">₹6,00,000</span></p>
+        <button onclick="openPaymentModal('Research Projects','₹6,00,000')" class="mt-4 px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-500">Donate Now</button>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded-xl shadow-lg">
+        <h3 class="text-lg font-bold text-purple-400">Alumni Meet</h3>
+        <p class="text-sm text-gray-300">Support the annual alumni networking and mentoring event.</p>
+        <p class="mt-2">Required: <span class="text-green-400 font-bold">₹2,00,000</span></p>
+        <button onclick="openPaymentModal('Alumni Meet','₹2,00,000')" class="mt-4 px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-500">Donate Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add New Donation Card Form -->
+  <section class="p-6 bg-gray-800 mt-6 rounded-xl shadow-lg">
+    <h2 class="text-xl font-semibold text-purple-300 mb-4">Add New Donation Request</h2>
+    <form class="space-y-4">
+      <input type="text" placeholder="Company/Project Name" class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-purple-500">
+      <textarea placeholder="Description" class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-purple-500"></textarea>
+      <input type="number" placeholder="Required Amount (₹)" class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-purple-500">
+      <button type="submit" class="px-6 py-2 bg-purple-600 rounded-lg hover:bg-purple-500">Add Donation Card</button>
+    </form>
+  </section>
+
+  <!-- Payment Modal -->
+  <div id="paymentModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center">
+    <div class="bg-gray-800 p-6 rounded-xl w-96 shadow-lg">
+      <h2 class="text-lg font-bold text-purple-400">Complete Your Donation</h2>
+      <p class="mt-2 text-gray-300">Project: <span id="payment-project" class="font-semibold"></span></p>
+      <p class="mt-1 text-gray-300">Amount: <span id="payment-amount" class="text-green-400 font-bold"></span></p>
+      <div class="mt-4 space-y-2">
+        <button class="w-full px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-500">Pay with Paytm</button>
+        <button class="w-full px-4 py-2 bg-green-600 rounded-lg hover:bg-green-500">Pay with UPI</button>
+        <button class="w-full px-4 py-2 bg-yellow-600 rounded-lg hover:bg-yellow-500">Pay with PayPal</button>
+        
+      </div>
+      <button onclick="closePaymentModal()" class="mt-4 w-full px-4 py-2 bg-gray-600 rounded-lg hover:bg-gray-500">Cancel</button>
+    </div>
+  </div>
+
+</body>
+</html>

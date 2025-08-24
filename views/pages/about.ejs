@@ -1,0 +1,110 @@
+<% layout("/layouts/boilerplate.ejs") %>
+  <title>About Us – Cummins Alumni Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="color-scheme" content="dark" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-100">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-gray-950/70 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <h1 class="text-xl font-bold text-fuchsia-300">Cummins Alumni Portal</h1>
+      <nav class="hidden md:flex gap-6 text-sm text-gray-300">
+        <a href="#history" class="hover:text-fuchsia-300">History</a>
+        <a href="#alumni" class="hover:text-fuchsia-300">Alumni</a>
+        <a href="#role" class="hover:text-fuchsia-300">Role of Alumni</a>
+        <a href="#contact" class="hover:text-fuchsia-300">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-b from-gray-900 to-gray-950">
+    <div class="max-w-7xl mx-auto px-4 py-16 md:py-24 text-center">
+      <h2 class="text-3xl md:text-5xl font-bold text-fuchsia-200">About Cummins Alumni Portal</h2>
+      <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Connecting students and alumni of Cummins College of Engineering, Nagpur — preserving history, building networks, and creating opportunities.</p>
+    </div>
+    <img src="https://cumminscollege.edu.in/UserData/uploads/pages/144/about-image.jpg" alt="Campus" class="w-full h-64 md:h-96 object-cover opacity-70" />
+  </section>
+
+  <!-- History Section -->
+  <section id="history" class="max-w-7xl mx-auto px-4 py-12 md:py-20">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <a href="https://cumminscollege.org/icaet/about/#:~:text=Cummins%20College%20is%20the%20first%20all%20women%20engineering,College%20is%20Maharshi%20Karve%20Stree%20Shikshan%20Samstha%20%28MKSSS%29."><h3 class="text-2xl font-semibold text-fuchsia-300">Our History</h3></a>
+        <p class="mt-4 text-gray-300 leading-relaxed">Cummins College of Engineering for Women (CCOEW), Nagpur was established with the mission of empowering women through quality technical education. Over the decades, CCOEW has built a reputation for academic excellence, innovation, and commitment to shaping women engineers who contribute significantly to society and industry. The Nagpur campus extends this legacy, providing a platform for aspiring engineers across various disciplines.</p>
+        <p class="mt-4 text-gray-300 leading-relaxed">With a strong foundation laid by our parent institution in Pune, CCOEW Nagpur has nurtured thousands of students who have gone on to achieve success in technology, research, entrepreneurship, and leadership globally.</p>
+      </div>
+      <div>
+        <img src="https://i.pinimg.com/originals/4e/fe/fc/4efefc36e91abbb513163d519bbaa6d1.jpg" alt="History" class="rounded-2xl shadow-lg border border-gray-200 h-65 " />
+      </div>
+    </div>
+  </section>
+
+  <!-- Alumni Section -->
+  <section id="alumni" class="bg-gray-900/50 border-t border-b border-gray-800 py-12 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <a href="https://cumminscollege.org/student-corner/student-activity/students-club/"><h3 class="text-2xl font-semibold text-fuchsia-300">Our Alumni</h3></a>
+      <p class="mt-4 text-gray-300 max-w-3xl mx-auto">The alumni of CCOEW Nagpur form a strong, global network of professionals across industries like technology, finance, research, and public service. They not only excel in their fields but also play a pivotal role in supporting current students through mentorship, career opportunities, and collaboration.</p>
+      <div class="mt-8 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="rounded-2xl overflow-hidden border border-gray-800 bg-gray-950">
+          <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=800&q=80" alt="Alumni 1" class="w-full h-40 object-cover" />
+          <div class="p-4">
+            <a href="https://cumminscollege.org/student-corner/career-katta/"><h4 class="font-semibold text-gray-200">Global</h4></a>
+            <p class="text-sm text-gray-400 mt-2">Alumni working across 30+ countries supporting each other’s professional growth.</p>
+          </div>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-gray-800 bg-gray-950">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Alumni 2" class="w-full h-40 object-cover" />
+          <div class="p-4">
+            <a href="https://www.cummins.com/en/in/company/corporate-responsibility/global-impact/projects/higher-education/india-scholarship-program"><h4 class="font-semibold text-gray-200">Mentorship</h4></a>
+            <p class="text-sm text-gray-400 mt-2">One-on-one mentorship sessions and group discussions led by alumni experts.</p>
+          </div>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-gray-800 bg-gray-950">
+          <img src="https://images.unsplash.com/photo-1504386106331-3e4e71712b38?auto=format&fit=crop&w=800&q=80" alt="Alumni 3" class="w-full h-40 object-cover" />
+          <div class="p-4">
+           <a href="https://cumminscollege.org/student-corner/career-katta/"><h4 class="font-semibold text-gray-200">Career Guidance</h4></a>
+            <p class="text-sm text-gray-400 mt-2">Placement assistance, referrals, and industry insights shared generously.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Role of Alumni Section -->
+  <section id="role" class="max-w-7xl mx-auto px-4 py-12 md:py-20">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <img src="https://cumminscollege.edu.in/UserData/uploads/album/ananya/Ananya%207.JPG" alt="Role of Alumni" class="rounded-2xl shadow-lg border border-gray-800" />
+      </div>
+      <div>
+        <h3 class="text-2xl font-semibold text-fuchsia-300">The Role of Alumni</h3>
+        <p class="mt-4 text-gray-300 leading-relaxed">Alumni are at the heart of the Cummins Alumni Portal. Their role is not only to inspire students but also to actively engage in shaping their careers. Alumni contribute by:</p>
+        <ul class="list-disc list-inside mt-4 space-y-2 text-gray-400">
+          <li>Providing mentorship in technical and non-technical fields.</li>
+          <li>Sharing opportunities like internships, jobs, and scholarships.</li>
+          <li>Conducting guest lectures and webinars for skill-building.</li>
+          <li>Supporting placement activities with referrals and mock interviews.</li>
+          <li>Building a bridge between industry and academia.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <footer id="contact" class="bg-gray-900 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-400 text-sm">For alumni queries and support, contact us at <a href="mailto:alumni.support@cumminsnagpur.edu" class="text-fuchsia-300 underline">alumni.support@cumminsnagpur.edu</a></p>
+      <p class="text-gray-500 text-xs mt-2 md:mt-0">© <span id="year"></span> Cummins College of Engineering, Nagpur — Alumni Relations</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

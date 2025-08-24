@@ -1,0 +1,120 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+  <title>About Us - Cummins College Alumni Portal</title>
+
+</head>
+<body class="bg-gray-900 text-gray-100">
+
+  <!-- Header -->
+  <header class="bg-gray-800 shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold text-purple-400">Cummins College Alumni Portal</h1>
+  </header>
+
+  <!-- About Section -->
+  <section class="p-6 max-w-5xl mx-auto">
+    <div class="text-center mb-8">
+    
+      <p class="text-gray-300 mt-2">
+        Cummins College of Engineering, Nagpur is known for academic excellence, innovation, 
+        and strong alumni support. The Alumni Portal connects students and graduates, 
+        fostering mentorship, networking, and career opportunities.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <img src="https://merocollege.com/wp-content/uploads/2020/01/Cummins-College-Nagpur-Logo.jpg" 
+           alt="Campus" 
+           class="rounded-xl shadow-lg w-full h-68 object-cover">
+      <div class="flex flex-col justify-center">
+        <h3 class="text-xl font-semibold text-purple-300 mb-2">Our History</h3>
+        <p class="text-gray-400">
+          Established with a vision to empower women in engineering, 
+          Cummins College has nurtured thousands of engineers contributing 
+          to industries globally. Our alumni form a strong network, 
+          actively supporting students through mentorship, career guidance, 
+          and funding.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section class="p-6 bg-gray-800">
+    <h2 class="text-2xl font-bold text-purple-300 text-center mb-6">Our Events & Activities<a href="https://cumminscollege.org/category/events/"><button class="px-6 py-2 ml-10 rounded-xl font-semibold 
+               bg-purple-600 text-white shadow-lg 
+               hover:bg-purple-500 hover:shadow-purple-400/50 
+               transition duration-300 ease-in-out">
+  Check AllOver Events
+</button></a></h2>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="eventGallery">
+      <!-- Example Event Cards -->
+      <div class="bg-gray-700 p-4 rounded-xl shadow-lg">
+        <img src="https://cumminscollege.edu.in/UserData/uploads/pages/144/img-2025-1.jpg" 
+             alt="Event" class="rounded-lg mb-3 object-cover w-full h-40">
+        <h3 class="text-lg font-semibold text-purple-200">Tech Fest</h3>
+        <p class="text-sm text-gray-300">Annual innovation festival showcasing projects and hackathons.</p>
+      </div>
+
+      <div class="bg-gray-700 p-4 rounded-xl shadow-lg">
+        <img src="https://cumminscollege.edu.in/UserData/uploads/album/sphurti.jpg" 
+             alt="Event" class="rounded-lg mb-3 object-cover w-full h-40">
+        <h3 class="text-lg font-semibold text-purple-200">Sports Marathon</h3>
+        <p class="text-sm text-gray-300">Inter-college sports event encouraging team spirit and fitness.</p>
+      </div>
+
+      <div class="bg-gray-700 p-4 rounded-xl shadow-lg">
+        <img src="https://cumminscollege.edu.in/app_theme/images/event5.jpg" 
+             alt="Event" class="rounded-lg mb-3 object-cover w-full h-40">
+        <h3 class="text-lg font-semibold text-purple-200">Alumni Meet</h3>
+        <p class="text-sm text-gray-300">Reunion for alumni to connect with peers and guide students.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upload Event Images -->
+  <section class="p-6 max-w-lg mx-auto">
+    <h2 class="text-xl font-bold text-purple-300 mb-3">Upload Event Image</h2>
+    <form id="uploadForm" class="space-y-3">
+      <input type="text" id="eventTitle" placeholder="Event Title" required
+             class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600">
+      <input type="text" id="eventDesc" placeholder="Event Description" required
+             class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600">
+      <input type="file" id="eventImg" accept="image/*" required
+             class="text-gray-300">
+      <button type="submit" 
+              class="w-full bg-purple-600 py-2 rounded-lg hover:bg-purple-500 font-semibold">Upload Event</button>
+    </form>
+  </section>
+
+  <script>
+    const form = document.getElementById("uploadForm");
+    const gallery = document.getElementById("eventGallery");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const title = document.getElementById("eventTitle").value;
+      const desc = document.getElementById("eventDesc").value;
+      const file = document.getElementById("eventImg").files[0];
+
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const imgURL = event.target.result;
+
+        const card = document.createElement("div");
+        card.className = "bg-gray-700 p-4 rounded-xl shadow-lg";
+        card.innerHTML = `
+          <img src="${imgURL}" class="rounded-lg mb-3 object-cover w-full h-40">
+          <h3 class="text-lg font-semibold text-purple-200">${title}</h3>
+          <p class="text-sm text-gray-300">${desc}</p>
+        `;
+        gallery.appendChild(card);
+        form.reset();
+      };
+      reader.readAsDataURL(file);
+    });
+  </script>
+
+</body>
+</html>
