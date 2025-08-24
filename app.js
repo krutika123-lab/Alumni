@@ -59,9 +59,7 @@ app.get("/alumni/post",(req,res)=>{
 app.get("/alumni/donation",(req,res)=>{
   res.render(__dirname+'/views/pages/donation.ejs');
 })
-app.get("/alumni/email",(req,res)=>{
-  res.render(__dirname+'/views/pages/email.ejs');
-})
+
 
 
 
