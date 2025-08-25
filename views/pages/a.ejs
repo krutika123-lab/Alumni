@@ -1,0 +1,207 @@
+const express=require("express");
+const app=express();
+const mongoose = require('mongoose');
+const path=require("path");
+const ejsMate=require("ejs-mate");
+app.engine('ejs',ejsMate);
+const methodOverRide=require("method-override");
+app.use(methodOverRide("_method"))
+const Listing=require("./models/listings.js");
+app.use(express.urlencoded({extended : true}));
+app.set("view engine","ejs");
+app.set("views",path.join(__dirname,"views"))
+app.use(express.json());
+app.use(express.static(path.join(__dirname,"/public")))
+const data=("./data.js");
+const cookieParser=require("cookie-parser")
+const session=require("express-session")
+const flash=require("connect-flash");
+const passport=require("passport");
+const LocalStrategy=require("passport-local");
+const User=require('./models/user.js');
+
+main().then((res)=>{
+    console.log("mongodb is working")
+})
+.catch((err) => console.log(err));
+
+async function main() {
+  await mongoose.connect('mongodb://127.0.0.1:27017/air');
+}
+
+
+
+const sessionOption={
+    secret:"mysupercode",
+    resave:false,
+    saveUninitialized:true,
+    cookie:{
+        expires:Date.now()+7*24*60*60*1000,
+    }
+}
+app.use(session(sessionOption));
+//to implement passport local we reqired sessions
+app.use(flash());//imp to write before any get post request.......
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()) )
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use((req,res,next)=>{
+    res.locals.success=req.flash("success"),
+    res.locals.error=req.flash("error"),
+    console.log(res.locals.success);
+    next();
+});
+
+app.listen(8080,()=>{
+    console.log("listening");
+})
+app.get("/home",(req,res)=>{
+    res.render("listings/home.ejs")
+})
+app.get("/",(req,res)=>{
+    res.render("listings/tabs.ejs");
+})
+
+app.get("/signup",(req,res)=>{
+    res.render("listings/signup.ejs");
+})
+app.post("/signup",async(req,res)=>{
+   let {username,email,password} = req.body;
+   const newuser=new User({username,email});
+   const registered=await User.register(newuser,password);
+   console.log(registered);
+   req.flash("success","Welcome to Papers.in")
+   res.redirect("/listings");
+
+});
+app.get("/testListing", async (req,res)=>{
+   let sampleListing = new Listing({
+    title:"my home",
+    description:"its beauty",
+    price:9000,
+    location:"hudkeshwar road ,nagpur",
+    country:"India",
+   })
+   await sampleListing.save();
+})
+
+app.get("/listings",async (req,res)=>{
+    const allListings = await Listing.find({})
+    res.render("listings/index.ejs", { allListings });
+    });
+
+app.get("/listing/new",(req,res)=>{
+    res.render("listings/new.ejs");
+})
+app.get("/listings/:id/edit", async(req,res)=>{
+    let {id}=req.params;
+    let listing= await Listing.findById(id);
+    res.render("listings/edit.ejs",{ listing });
+})
+
+app.put("/listings/:id", async(req,res,)=>{
+   
+    let {id}=req.params;
+    await Listing.findByIdAndUpdate(id, {...req.body.listing});
+    res.redirect(`/listings/${id}`);
+   
+})
+app.use(cookieParser("secretcode"))
+app.get("/getcookies",(req,res)=>{
+   //res.cookie("greet","hello"); //greet cookie name heelo is value use to enter user name and value
+   res.cookie("greet","hello",{signed:true})
+   res.cookie("hello","India",{signed:true})
+    res.send("send you cookies");
+})
+app.get("/verify",(req,res)=>{
+   //console.log("res.cookie"); give unsigned cookies
+   console.log(req.signedcookies);
+    res.send("verified");
+})
+app.delete("/listings/:id", async(req,res)=>{
+    let {id}= req.params;
+    let deleted=await Listing.findByIdAndDelete(id);
+    console.log(deleted);
+    res.redirect("/listings");
+})
+app.get("/listings/:id",async (req,res)=>{
+        let { id } =req.params;
+        const listing= await Listing.findById(id);
+         if(!listing){
+            req.flash("error","Data Not Found!");
+            res.redirect("/listings")
+        }
+        res.render("listings/show.ejs",{ listing })
+    })
+    
+app.post("/listings",async (req,res,next)=>{
+    
+        let {title, description, image, price, location, country} =req.body;
+        const newListing= new Listing(req.body);
+        await newListing.save();
+        console.log(req.body);
+        req.flash("success","New Data Created!");
+        res.redirect("/listings");
+    
+    
+});
+app.post("/interview",async (req,res,next)=>{
+    
+        let {title, description, image, price, location, country} =req.body;
+        const newListing= new Listing(req.body);
+        await newListing.save();
+        console.log(req.body);
+        req.flash("success","New Data Created!");
+        res.redirect("/listings");
+    
+    
+});
+app.post("/gate",async (req,res,next)=>{
+    
+        let {title, description, image, price, location, country} =req.body;
+        const newListing= new Listing(req.body);
+        await newListing.save();
+        console.log(req.body);
+        req.flash("success","New Data Created!");
+        res.redirect("/listings");
+    
+    
+});
+app.post("/notes",async (req,res,next)=>{
+    
+        let {title, description, image, price, location, country} =req.body;
+        const newListing= new Listing(req.body);
+        await newListing.save();
+        console.log(req.body);
+        req.flash("success","New Data Created!");
+        res.redirect("/listings");
+    
+    
+});
+
+    app.get("/notes",async (req,res)=>{
+    const allListings = await Listing.find({})
+    res.render("listings/notes.ejs", { allListings });
+    });
+
+    app.get("/gate",async (req,res)=>{
+    const allListings = await Listing.find({})
+    res.render("listings/gate.ejs", { allListings });
+    });
+
+    app.get("/interview",async (req,res)=>{
+    const allListings = await Listing.find({})
+    res.render("listings/interview.ejs", { allListings });
+    });
+
+app.get("/login",(req,res)=>{
+    res.render("listings/login.ejs");
+});
+app.post("/login",passport.authenticate('local',{failureRedirect:'/login',failureflash:true}),async(req,res)=>{
+   req.flash("success","Logged In Successfully!");
+   res.render("listings/tabs.ejs");
+})

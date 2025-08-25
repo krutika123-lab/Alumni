@@ -1,53 +1,75 @@
-
-<body>
-  <div className="h-lg-full h-md-3/4 h-sm-1/2 w-full  ">
-<div class="flex flex-column bg-gray-800 text-white p-2 w-full ">
-  <div class="flex flex-row flex-1 sticky bottom-0 ">
-    <h6 className="footer-title">Follow us on </h6>
- <a href="https://www.instagram.com/ccoewnagpur/" target="_blank"
-       class="text-pink-500 hover:text-pink-600 transition-colors duration-300">
-      <i class="fab fa-instagram  ml-6"></i>
-    </a>
-
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/CCOEWNAGPUR/" target="_blank"
-       class="text-blue-600 hover:text-blue-700 transition-colors duration-300">
-      <i class="fab fa-facebook  ml-6"></i>
-    </a>
-
-    <!-- Twitter (if available later) -->
-    <a href="#" target="_blank"
-       class="text-sky-500 hover:text-sky-600 transition-colors duration-300 opacity-50 cursor-not-allowed "
-       title="Twitter account not found">
-      <i class="fab fa-twitter ml-6"></i>
-    </a>
-  </div>
-  </div>
-</div>
-  <nav class="navbar navbar-expand-sm bg-body-tertiary">
-  <div class="container-fluid  w-full h-20">
-    <div>
-    
-    <p class="text-4xl text-blue-500 font-semibold font-sans"> <i class="fas fa-graduation-cap text-indigo-200 ml-4 "></i>ALUMNI PORTAL</div>
-
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-40">
-        <li class="nav-item">
-          <a class="nav-link active text-xl text-indigo-200 ml-40" aria-current="page" href="/alumni/home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active text-xl text-indigo-200 ml-7" aria-current="page" href="/alumni/career">Career</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active text-xl text-indigo-200 ml-7" aria-current="page" href="/alumni/events">Events</a>
-        </li>
-         
-         <li class="nav-item">
-          <a class="nav-link active  text-xl text-indigo-200 ml-7" aria-current="page" href="/alumni/benefits">Benfits</a>
-        </li>
-   </ul>
-</div>
+<body class="bg-gray-900 text-white">
+  <!-- Footer Section -->
+  <div class="h-lg-10 h-md-3/4 h-sm-1/2 w-full">
+    <div class="flex flex-col bg-gray-900 text-white p-1 w-full">
+      <div class="flex flex-row items-center justify-center sticky bottom-0 space-x-6">
+        <h6 class="footer-title text-sm sm:text-base font-semibold tracking-wide">Follow us on</h6>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/ccoewnagpur/" target="_blank"
+          class="text-pink-500 hover:text-pink-600 transition duration-300 text-lg">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/CCOEWNAGPUR/" target="_blank"
+          class="text-blue-600 hover:text-blue-700 transition duration-300 text-lg">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <!-- Twitter Disabled -->
+        <a href="#" target="_blank"
+          class="text-sky-500 opacity-50 cursor-not-allowed text-lg"
+          title="Twitter account not found">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
     </div>
   </div>
-</nav>
+
+  <!-- Navbar Section -->
+  <nav class="w-full bg-gray-800 shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto flex items-center justify-between px-6 py-4">
+      
+      <!-- Logo + Title -->
+      <div class="flex items-center space-x-4">
+        <!-- Logo Icon -->
+        <div class="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg">
+          <i class="fas fa-graduation-cap text-white text-3xl drop-shadow-md"></i>
+        </div>
+        <!-- Portal Title -->
+        <h1
+          class="text-2xl sm:text-3xl md:text-4xl font-extrabold font-sans bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 drop-shadow-lg tracking-wide">
+          CCOEW Nagpur<br class="hidden sm:block"> Alumni Portal
+        </h1>
+      </div>
+
+      <!-- Nav Links -->
+      <ul class="hidden md:flex space-x-8 font-medium">
+        <li><a class="text-indigo-200 hover:text-indigo-400 text-2xl transition" href="/alumni/home">Home</a></li>
+        <li><a class="text-indigo-200 hover:text-indigo-400 text-2xl transition" href="/alumni/career">Career</a></li>
+        <li><a class="text-indigo-200 hover:text-indigo-400 text-2xl transition" href="/alumni/events">Events</a></li>
+        <li><a class="text-indigo-200 hover:text-indigo-400 text-2xl transition" href="/alumni/benefits">Benefits</a></li>
+      </ul>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="menu-btn" class="text-indigo-200 hover:text-white focus:outline-none text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="menu" class="hidden flex-col space-y-4 px-6 pb-4 bg-gray-700 md:hidden">
+      <a class="text-indigo-200 hover:text-indigo-400 text-lg transition" href="/alumni/home">Home</a>
+      <a class="text-indigo-200 hover:text-indigo-400 text-lg transition" href="/alumni/career">Career</a>
+      <a class="text-indigo-200 hover:text-indigo-400 text-lg transition" href="/alumni/events">Events</a>
+      <a class="text-indigo-200 hover:text-indigo-400 text-lg transition" href="/alumni/benefits">Benefits</a>
+    </div>
+  </nav>
+
+  <script>
+    // Toggle mobile menu
+    document.getElementById("menu-btn").addEventListener("click", function () {
+      document.getElementById("menu").classList.toggle("hidden");
+    });
+  </script>
 </body>
-</html>
