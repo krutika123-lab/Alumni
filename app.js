@@ -218,24 +218,16 @@ app.post("/alumni/send-email", isLoggedIn, async (req, res) => {
   try {
     let { recipients, subject, message } = req.body;
 
-    // Normalize recipients into an array of strings
+    // Normalize recipients
     if (!Array.isArray(recipients)) {
-      if (typeof recipients === "string") {
-        try {
-          recipients = JSON.parse(recipients);
-        } catch {
-          recipients = recipients.split(",").map((e) => e.trim());
-        }
-      } else {
-        recipients = [];
-      }
+      recipients = typeof recipients === "string"
+        ? recipients.split(",").map(e => e.trim())
+        : [];
     }
     recipients = recipients.filter(Boolean);
 
     if (!recipients.length) {
-      return res
-        .status(400)
-        .json({ success: false, error: "No recipients provided" });
+      return res.status(400).json({ success: false, error: "No recipients provided" });
     }
 
     await mailTransporter.sendMail({
@@ -248,9 +240,10 @@ app.post("/alumni/send-email", isLoggedIn, async (req, res) => {
     return res.json({ success: true });
   } catch (err) {
     console.error("Email send error:", err);
-    return res
-      .status(500)
-      .json({ success: false, error: err && err.message ? err.message : "MAIL_ERROR" });
+    return res.status(500).json({
+      success: false,
+      error: err.message || "MAIL_ERROR",
+    });
   }
 });
 
