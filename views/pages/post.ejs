@@ -14,18 +14,16 @@
   </header>
 
   <!-- Form Section -->
-  <section class="p-6 max-w-3xl mx-auto">
-    <h2 class="text-xl font-semibold text-purple-300 mb-4">Add Alumni Post</h2>
-    <form id="alumniForm" class="bg-gray-800 p-6 rounded-xl shadow-lg space-y-4">
-      <input type="text" id="name" placeholder="Alumni Name" class="w-full p-2 rounded bg-gray-700 text-white">
-      <input type="text" id="company" placeholder="Company Name" class="w-full p-2 rounded bg-gray-700 text-white">
-      <input type="email" id="email" placeholder="Email Address" class="w-full p-2 rounded bg-gray-700 text-white">
-      <input type="file" id="image" accept="image/*" class="w-full text-gray-300">
-      <input type="text" id="experience" placeholder="Experience (e.g. 5 years)" class="w-full p-2 rounded bg-gray-700 text-white">
-      <input type="text" id="skills" placeholder="Skills (comma separated)" class="w-full p-2 rounded bg-gray-700 text-white">
-      <button type="submit" class="w-full bg-purple-600 hover:bg-purple-500 p-2 rounded-lg">Upload Post</button>
-    </form>
-  </section>
+  <form action="/alumni/post" method="POST" enctype="multipart/form-data"
+        class="max-w-3xl mx-auto mt-6 bg-gray-800 p-6 rounded-xl shadow-lg space-y-4" id="alumniForm">
+    <input type="text" name="name" placeholder="Alumni Name" class="w-full p-2 rounded bg-gray-700 text-white" required>
+    <input type="text" name="company" placeholder="Company Name" class="w-full p-2 rounded bg-gray-700 text-white" required>
+    <input type="email" name="email" placeholder="Email Address" class="w-full p-2 rounded bg-gray-700 text-white" required>
+    <input type="text" name="experience" placeholder="Experience (e.g. 5 years)" class="w-full p-2 rounded bg-gray-700 text-white">
+    <input type="text" name="skills" placeholder="Skills (comma separated)" class="w-full p-2 rounded bg-gray-700 text-white">
+    <input type="file" name="image" accept="image/*" class="w-full text-gray-300">
+    <button type="submit" class="w-full bg-purple-600 hover:bg-purple-500 p-2 rounded-lg">Upload Post</button>
+  </form>
 
   <!-- Search Bar -->
   <section class="p-6 max-w-3xl mx-auto">
@@ -37,151 +35,105 @@
   <section class="p-6">
     <h2 class="text-xl font-semibold text-purple-300 mb-4">Alumni Posts</h2>
     <div id="alumniCards" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-
-      <div class="alumni-card bg-gray-800 p-4 rounded-xl shadow-lg" data-search="sneha joshi infosys python ai">
-        <input type="checkbox" class="mb-2" data-email="sneha.j@infosys.com">
-        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Alumni" class="w-24 h-24 rounded-full mx-auto">
-        <h3 class="text-lg font-bold mt-3">Sneha Joshi</h3>
-        <p class="text-gray-300">Company: Infosys</p>
-        <p class="text-gray-300">Email: sneha.j@infosys.com</p>
-        <p class="text-gray-300">Experience: 4 years</p>
-        <p class="text-gray-300">Skills: Python, AI, Machine Learning</p>
-      </div>
-
-<div class="alumni-card bg-gray-800 p-4 rounded-xl shadow-lg" data-search="priya sharma wipro cloud devops">
-  <input type="checkbox" class="mb-2" data-email="priya.sharma@wipro.com">
-  <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Alumni" class="w-24 h-24 rounded-full mx-auto">
-  <h3 class="text-lg font-bold mt-3">Priya Sharma</h3>
-  <p class="text-gray-300">Company: Wipro</p>
-  <p class="text-gray-300">Email: priya.sharma@wipro.com</p>
-  <p class="text-gray-300">Experience: 5 years</p>
-  <p class="text-gray-300">Skills: Cloud, DevOps, Kubernetes</p>
-</div>
-
-<div class="alumni-card bg-gray-800 p-4 rounded-xl shadow-lg" data-search="neha kulkarni accenture data science python">
-  <input type="checkbox" class="mb-2" data-email="neha.kulkarni@accenture.com">
-  <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Alumni" class="w-24 h-24 rounded-full mx-auto">
-  <h3 class="text-lg font-bold mt-3">Neha Kulkarni</h3>
-  <p class="text-gray-300">Company: Accenture</p>
-  <p class="text-gray-300">Email: neha.kulkarni@accenture.com</p>
-  <p class="text-gray-300">Experience: 3 years</p>
-  <p class="text-gray-300">Skills: Data Science, Python, SQL</p>
-</div>
-
-<div class="alumni-card bg-gray-800 p-4 rounded-xl shadow-lg" data-search="aarti deshmukh capgemini frontend react">
-  <input type="checkbox" class="mb-2" data-email="aarti.deshmukh@capgemini.com">
-  <img src="https://randomuser.me/api/portraits/women/29.jpg" alt="Alumni" class="w-24 h-24 rounded-full mx-auto">
-  <h3 class="text-lg font-bold mt-3">Aarti Deshmukh</h3>
-  <p class="text-gray-300">Company: Capgemini</p>
-  <p class="text-gray-300">Email: aarti.deshmukh@capgemini.com</p>
-  <p class="text-gray-300">Experience: 6 years</p>
-  <p class="text-gray-300">Skills: Frontend, React, JavaScript</p>
-</div>
-
-<div class="alumni-card bg-gray-800 p-4 rounded-xl shadow-lg" data-search="radhika nair dell cybersecurity networking">
-  <input type="checkbox" class="mb-2" data-email="radhika.nair@dell.com">
-  <img src="https://randomuser.me/api/portraits/women/54.jpg" alt="Alumni" class="w-24 h-24 rounded-full mx-auto">
-  <h3 class="text-lg font-bold mt-3">Radhika Nair</h3>
-  <p class="text-gray-300">Company: Dell</p>
-  <p class="text-gray-300">Email: radhika.nair@dell.com</p>
-  <p class="text-gray-300">Experience: 7 years</p>
-  <p class="text-gray-300">Skills: Cybersecurity, Networking, Linux</p>
-</div>
-
-<div class="alumni-card bg-gray-800 p-4 rounded-xl shadow-lg" data-search="megha verma microsoft ai cloud architect">
-  <input type="checkbox" class="mb-2" data-email="megha.verma@microsoft.com">
-  <img src="https://randomuser.me/api/portraits/women/77.jpg" alt="Alumni" class="w-24 h-24 rounded-full mx-auto">
-  <h3 class="text-lg font-bold mt-3">Megha Verma</h3>
-  <p class="text-gray-300">Company: Microsoft</p>
-  <p class="text-gray-300">Email: megha.verma@microsoft.com</p>
-  <p class="text-gray-300">Experience: 8 years</p>
-  <p class="text-gray-300">Skills: AI, Cloud, Solution Architect</p>
-</div>
+      <% if (aalumni && aalumni.length > 0) { %>
+        <% aalumni.forEach(a => { %>
+          <div class="alumni-card bg-gray-800 p-4 rounded-xl shadow-lg"
+               data-search="<%= (a.name || '').toLowerCase() %> <%= (a.company || '').toLowerCase() %> <%= (a.skills && a.skills.length ? a.skills.join(' ') : '').toLowerCase() %>">
+            <input type="checkbox" class="mb-2" data-email="<%= a.email || '' %>">
+            <img src="<%= a.image || 'https://via.placeholder.com/150' %>"
+                 alt="Alumni" class="w-24 h-24 rounded-full mx-auto">
+            <h3 class="text-lg font-bold mt-3"><%= a.name || 'Unknown' %></h3>
+            <p class="text-gray-300">Company: <%= a.company || 'N/A' %></p>
+            <p class="text-gray-300">Email: <%= a.email || 'N/A' %></p>
+            <p class="text-gray-300">Experience: <%= a.experience || 'N/A' %></p>
+            <p class="text-gray-300">Skills: <%= (a.skills && a.skills.length ? a.skills.join(', ') : 'None') %></p>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p class="text-gray-400">No alumni posts yet. Be the first to add one!</p>
+      <% } %>
     </div>
   </section>
 
+  <!-- Email Section -->
   <section class="p-6 bg-gray-800 mt-6 rounded-xl shadow-lg max-w-3xl mx-auto">
     <h2 class="text-xl font-semibold text-purple-300 mb-4">Send Email</h2>
     <textarea id="studentEmails" placeholder="Enter student emails (comma separated)"
       class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white mb-3"></textarea>
     <textarea id="message" placeholder="Enter your message to alumni..."
       class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white mb-3"></textarea>
-    <button onclick="sendEmail()" 
+    <button id="sendEmailBtn"
       class="w-full bg-green-600 hover:bg-green-500 p-3 rounded-lg font-semibold">Send Email to Selected Alumni</button>
+    <p id="emailStatus" class="text-sm mt-2 text-gray-300"></p>
   </section>
 
   <script>
-
-    document.getElementById("alumniForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const name = document.getElementById("name").value;
-      const company = document.getElementById("company").value;
-      const email = document.getElementById("email").value;
-      const experience = document.getElementById("experience").value;
-      const skills = document.getElementById("skills").value;
-      const imageInput = document.getElementById("image");
-      let imgURL = "https://via.placeholder.com/150"; // default
-
-      if (imageInput.files && imageInput.files[0]) {
-        imgURL = URL.createObjectURL(imageInput.files[0]);
-      }
-
-      const card = document.createElement("div");
-      card.className = "alumni-card bg-gray-800 p-4 rounded-xl shadow-lg";
-      card.setAttribute("data-search", `${name.toLowerCase()} ${company.toLowerCase()} ${skills.toLowerCase()}`);
-      card.innerHTML = `
-        <input type="checkbox" class="mb-2" data-email="${email}">
-        <img src="${imgURL}" alt="Alumni" class="w-24 h-24 rounded-full mx-auto">
-        <h3 class="text-lg font-bold mt-3">${name}</h3>
-        <p class="text-gray-300">Company: ${company}</p>
-        <p class="text-gray-300">Email: ${email}</p>
-        <p class="text-gray-300">Experience: ${experience}</p>
-        <p class="text-gray-300">Skills: ${skills}</p>
-      `;
-      document.getElementById("alumniCards").appendChild(card);
-      e.target.reset();
-    });
-
-    // Smart Search
+    // Live search
     document.getElementById("searchInput").addEventListener("input", function () {
-      const query = this.value.toLowerCase();
+      const q = this.value.toLowerCase();
       document.querySelectorAll(".alumni-card").forEach(card => {
-        if (card.getAttribute("data-search").includes(query)) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
+        card.style.display = card.getAttribute("data-search").includes(q) ? "block" : "none";
       });
     });
 
     // Send Email
-    function sendEmail() {
-      const studentEmails = document.getElementById("studentEmails").value.split(",").map(s => s.trim()).filter(Boolean);
+    const btn = document.getElementById("sendEmailBtn");
+    const statusEl = document.getElementById("emailStatus");
+
+    btn.addEventListener("click", async () => {
+      const studentEmails = document.getElementById("studentEmails").value
+        .split(",").map(s => s.trim()).filter(Boolean);
       const message = document.getElementById("message").value.trim();
       const selectedAlumni = [...document.querySelectorAll("input[type=checkbox]:checked")]
         .map(cb => cb.getAttribute("data-email"));
 
-      if (selectedAlumni.length === 0) {
-        alert("Please select at least one alumni.");
-        return;
-      }
-      if (studentEmails.length === 0) {
-        alert("Please enter student emails.");
-        return;
-      }
-      if (!message) {
-        alert("Please enter a message to send.");
-        return;
-      }
+      if (!selectedAlumni.length) return alert("Please select at least one alumni.");
+      if (!studentEmails.length) return alert("Please enter student emails.");
+      if (!message) return alert("Please enter a message to send.");
 
-      const recipients = [...studentEmails, ...selectedAlumni].join(",");
-      const subject = "Alumni Connection";
-      const body = encodeURIComponent(message);
+      btn.disabled = true;
+      statusEl.textContent = "Sending...";
 
-      window.location.href = `mailto:${recipients}?subject=${subject}&body=${body}`;
-    }
+      try {
+        const response = await fetch("/alumni/send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "X-Requested-With": "XMLHttpRequest"
+          },
+          body: JSON.stringify({
+            recipients: [...studentEmails, ...selectedAlumni],
+            subject: "Alumni Connection",
+            message
+          })
+        });
+
+        // Always parse safely
+        const text = await response.text();
+        let data;
+        try { data = JSON.parse(text); } catch { data = null; }
+
+        if (response.status === 401) {
+          alert("Please log in to send emails.");
+          window.location.href = "/alumni/login";
+          return;
+        }
+
+        if (data && data.success) {
+          alert("✅ Email sent successfully!");
+          statusEl.textContent = "Delivered.";
+        } else {
+          const errMsg = (data && data.error) ? data.error : "Unexpected server response.";
+          alert("❌ Failed to send email: " + errMsg);
+          statusEl.textContent = errMsg;
+        }
+      } catch (err) {
+        alert("❌ Error: " + err.message);
+        statusEl.textContent = err.message;
+      } finally {
+        btn.disabled = false;
+      }
+    });
   </script>
-
 </body>
-</html>

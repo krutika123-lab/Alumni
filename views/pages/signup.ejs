@@ -180,40 +180,31 @@
         <p class="subtitle">Enter your account details</p>
       </header>
 
-      <form action="/" method="POST" id="loginForm" autocomplete="on" novalidate>
-        <div class="field">
-          <label for="username">Username</label>
-          <div class="control">
-            <input id="username" name="username" type="text" required placeholder="Enter your username" />
-          </div>
-        </div>
-         <form action="/alumni/login" method="POST" id="loginForm" autocomplete="on" novalidate>
-        <div class="field">
-          <label for="username">Email</label>
-          <div class="control">
-            <input id="email" name="email" type="text" required placeholder="Enter your email" />
-          </div>
-        </div>
+      <form action="/" method="POST" id="signupForm" autocomplete="on" novalidate>
+  <div class="field">
+    <label for="username">Username</label>
+    <div class="control">
+      <input id="username" name="username" type="text" required placeholder="Enter your username" />
+    </div>
+  </div>
 
-        <div class="field">
-          <label for="password">Password</label>
-          <div class="control">
-            <input id="password" name="password" type="password" required minlength="6" placeholder="Enter your password" />
-            <button type="button" class="toggle-eye" aria-label="Show password" onclick="togglePass()">
-              <svg id="eyeIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/>
-                <circle cx="12" cy="12" r="3"/>
-              </svg>
-            </button>
-          </div>
-          <div class="row">
-            <label class="muted"><input type="checkbox" id="remember" /> Remember me</label>
-            <a href="#" class="link">Forgot Password?</a>
-          </div>
-        </div>
+  <div class="field">
+    <label for="email">Email</label>
+    <div class="control">
+      <input id="email" name="email" type="email" required placeholder="Enter your email" />
+    </div>
+  </div>
 
-      <a href="/"> <button class="btn" type="submit">Signup</button></a>
-      </form>
+  <div class="field">
+    <label for="password">Password</label>
+    <div class="control">
+      <input id="password" name="password" type="password" required minlength="6" placeholder="Enter your password" />
+    </div>
+  </div>
+
+  <button class="btn" type="submit">Signup</button>
+</form>
+
 
       <div class="row" style="margin-top:6px">
         <span class="muted">If have an account?</span>
@@ -235,18 +226,7 @@
     }
   }
 
-  // validation + redirect
-  document.getElementById('loginForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const u = this.username.value.trim();
-    const p = this.password.value;
-    if(!u || p.length < 6){
-      alert('Please enter a valid username and a password of at least 6 characters.');
-      return;
-    }
-    // ✅ Redirect after success
-    window.location.href = "/alumni/home"; // change to your page
-  });
+  
 </script>
 </body>
 </html>
