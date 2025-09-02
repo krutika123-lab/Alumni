@@ -1,75 +1,110 @@
-<body class="bg-gray-900 text-white">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cummnis College Of Engineering Nagpur Alumni/Student Portal</title>
+</head>
+<body class="bg-gray-900 text-white ">
+
   <!-- Footer Section -->
-  <div class="h-lg-10 h-md-3/4 h-sm-1/2 w-full">
-    <div class="flex flex-col bg-gray-900 text-white p-1 w-full">
-      <div class="flex flex-row items-center justify-center sticky bottom-0 space-x-6">
-        <h6 class="footer-title text-sm sm:text-base font-semibold tracking-wide">Follow us on</h6>
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/ccoewnagpur/" target="_blank"
-          class="text-pink-500 hover:text-pink-600 transition duration-300 text-lg">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <!-- Facebook -->
-        <a href="https://www.facebook.com/CCOEWNAGPUR/" target="_blank"
-          class="text-blue-600 hover:text-blue-700 transition duration-300 text-lg">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <!-- Twitter Disabled -->
-        <a href="#" target="_blank"
-          class="text-sky-500 opacity-50 cursor-not-allowed text-lg"
-          title="Twitter account not found">
-          <i class="fab fa-twitter"></i>
-        </a>
-      </div>
+  <footer class="w-full bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white border-t border-gray-700 py-1 shadow-inner">
+    <div class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-2">
+      <h6 class="footer-title text-sm sm:text-base font-bold tracking-widest uppercase text-gray-300 hover:text-fuchsia-400 transition duration-300">
+        Follow us on
+      </h6>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/ccoewnagpur/" target="_blank"
+        class="text-pink-500 hover:text-pink-400 hover:scale-125 hover:drop-shadow-[0_0_10px_rgba(236,72,153,0.8)] transition duration-300 text-xl transform">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/CCOEWNAGPUR/" target="_blank"
+        class="text-blue-600 hover:text-blue-400 hover:scale-125 hover:drop-shadow-[0_0_10px_rgba(59,130,246,0.8)] transition duration-300 text-xl transform">
+        <i class="fab fa-facebook"></i>
+      </a>
+
+      <!-- Twitter Disabled -->
+      <span class="text-sky-500 opacity-50 cursor-not-allowed text-xl" title="Twitter account not found">
+        <i class="fab fa-twitter"></i>
+      </span>
     </div>
-  </div>
+
+    <p class="text-gray-400 text-center text-xs mt-2 tracking-wide hover:text-fuchsia-400 transition duration-300">
+      © 2025 Cummins College of Engineering, Nagpur. All Rights Reserved.
+    </p>
+  </footer>
+</body>
 
   <!-- Navbar Section -->
-  <nav class="w-full bg-gray-800 shadow-lg sticky top-0 z-50">
-    <div class="container mx-auto flex items-center justify-between px-6 py-4">
-      
+  <nav class="w-full bg-gradient-to-r from-indigo-900 via-purple-900 to-fuchsia-900 shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto flex items-center justify-between px-6 py-3">
+
       <!-- Logo + Title -->
-      <div class="flex items-center space-x-4">
-        <!-- Logo Icon -->
-        <div class="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg">
-          <i class="fas fa-graduation-cap text-white text-3xl drop-shadow-md"></i>
+      <div class="flex items-center space-x-3 group">
+        <!-- Cummins Logo -->
+        <div class="rounded-full shadow-lg transform transition duration-500 group-hover:scale-110 group-hover:shadow-fuchsia-500/50">
+          <img src="https://tse4.mm.bing.net/th/id/OIP.WVzFmEiC6arIgAtUlieFXAHaHa?pid=Api&P=0&h=180"
+            alt="Cummins Logo" class="h-20 w-20 rounded-full object-cover">
         </div>
         <!-- Portal Title -->
         <h1
-          class="text-2xl sm:text-3xl md:text-4xl font-extrabold font-sans bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 drop-shadow-lg tracking-wide">
+          class="text-2xl sm:text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent 
+          bg-gradient-to-r from-fuchsia-400 via-indigo-300 to-blue-400 tracking-wide transition duration-500 
+          group-hover:from-pink-400 group-hover:via-purple-300 group-hover:to-cyan-400">
           CCOEW Nagpur<br class="hidden sm:block"> Alumni Portal
         </h1>
       </div>
 
       <!-- Nav Links -->
       <ul class="hidden md:flex space-x-8 font-medium">
-        <li><a class="text-indigo-200 hover:text-indigo-400 text-2xl transition" href="/alumni/home">Home</a></li>
-        <li><a class="text-indigo-200 hover:text-indigo-400 text-2xl transition" href="/alumni/career">Career</a></li>
-        <li><a class="text-indigo-200 hover:text-indigo-400 text-2xl transition" href="/alumni/events">Events</a></li>
-        <li><a class="text-indigo-200 hover:text-indigo-400 text-2xl transition" href="/alumni/benefits">Benefits</a></li>
+        <li><a class="text-gray-200 hover:text-fuchsia-400 hover:underline hover:scale-110 text-2xl transition duration-300"
+            href="/alumni/home">Home</a></li>
+        <li><a class="text-gray-200 hover:text-fuchsia-400 hover:underline hover:scale-110 text-2xl transition duration-300"
+            href="/alumni/career">Career</a></li>
+        <li><a class="text-gray-200 hover:text-fuchsia-400 hover:underline hover:scale-110 text-2xl transition duration-300"
+            href="/alumni/event">Events</a></li>
+        <li><a class="text-gray-200 hover:text-fuchsia-400 hover:underline hover:scale-110 text-2xl transition duration-300"
+            href="/alumni/benfits">Benefits</a></li>
       </ul>
 
       <!-- Mobile Menu Button -->
       <div class="md:hidden">
-        <button id="menu-btn" class="text-indigo-200 hover:text-white focus:outline-none text-2xl">
-          <i class="fas fa-bars"></i>
+        <button id="menu-btn"
+          class="text-gray-200 hover:text-white focus:outline-none text-2xl transition duration-300 transform hover:scale-125">
+          <i id="menu-icon" class="fas fa-bars"></i>
         </button>
       </div>
     </div>
 
     <!-- Mobile Dropdown -->
-    <div id="menu" class="hidden flex-col space-y-4 px-6 pb-4 bg-gray-700 md:hidden">
-      <a class="text-indigo-200 hover:text-indigo-400 text-lg transition" href="/alumni/home">Home</a>
-      <a class="text-indigo-200 hover:text-indigo-400 text-lg transition" href="/alumni/career">Career</a>
-      <a class="text-indigo-200 hover:text-indigo-400 text-lg transition" href="/alumni/events">Events</a>
-      <a class="text-indigo-200 hover:text-indigo-400 text-lg transition" href="/alumni/benefits">Benefits</a>
+    <div id="menu" class="hidden flex-col space-y-4 px-6 pb-4 bg-gray-800 md:hidden">
+      <a class="text-gray-200 hover:text-fuchsia-400 hover:pl-3 transition duration-300" href="/alumni/home">Home</a>
+      <a class="text-gray-200 hover:text-fuchsia-400 hover:pl-3 transition duration-300" href="/alumni/career">Career</a>
+      <a class="text-gray-200 hover:text-fuchsia-400 hover:pl-3 transition duration-300" href="/alumni/events">Events</a>
+      <a class="text-gray-200 hover:text-fuchsia-400 hover:pl-3 transition duration-300" href="/alumni/benfits">Benefits</a>
     </div>
   </nav>
 
   <script>
     // Toggle mobile menu
-    document.getElementById("menu-btn").addEventListener("click", function () {
-      document.getElementById("menu").classList.toggle("hidden");
+    const menuBtn = document.getElementById("menu-btn");
+    const menu = document.getElementById("menu");
+    const menuIcon = document.getElementById("menu-icon");
+
+    menuBtn.addEventListener("click", function () {
+      menu.classList.toggle("hidden");
+
+      // Toggle icon
+      if (menu.classList.contains("hidden")) {
+        menuIcon.classList.remove("fa-times");
+        menuIcon.classList.add("fa-bars");
+      } else {
+        menuIcon.classList.remove("fa-bars");
+        menuIcon.classList.add("fa-times");
+      }
     });
   </script>
 </body>

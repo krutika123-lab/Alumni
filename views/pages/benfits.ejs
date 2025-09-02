@@ -1,27 +1,76 @@
+    
 <% layout("/layouts/boilerplate.ejs") %>
 
-<body class="bg-gray-900 text-gray-100 font-sans">
-    <section class="bg-gray-800 py-16 text-center">
-        <div class="container mx-auto">
-            <h2 class="text-4xl font-bold mb-4">Benefits for Students & Alumni</h2>
-            <p class="text-gray-300 max-w-2xl mx-auto">
-                The Cummins College Alumni Portal connects students and alumni, offering exclusive benefits, resources, and opportunities to grow academically, professionally, and socially.
-            </p>
-        </div>
-    </section>
+<body id="page-body" class="bg-gray-900 text-gray-100 font-sans transition-colors duration-500">
+  <!-- Hero Banner -->
+<section class="relative h-64">
+  <img src="https://cumminscollege.edu.in/UserData/uploads/pages/142/about-image.jpg" alt="Cummins College Campus" class="absolute inset-0 w-full h-full object-cover brightness-75">
+  <div class="relative z-10 flex items-center justify-center h-full">
+     
+  </div>
+</section>
+
+  <section class="relative bg-gray-800 py-16">
+  <div class="container mx-auto px-6 lg:px-12">
+    <!-- Header row with title and toggle button -->
+   <div class="flex items-center justify-between mb-8">
+  <!-- Centered Heading -->
+  <h2 class="text-3xl lg:text-4xl font-bold text-white text-center flex-1">
+    Benefits for <span class="text-blue-400">CCOEW Nagpur</span> Students & Alumni
+  </h2>
+
+  <!-- Toggle Button aligned Right -->
+  <button id="theme-toggle"
+    class="ml-6 px-4 py-2 rounded-xl text-sm bg-white text-gray-800 hover:bg-gray-200 shadow transition flex items-center gap-2">
+    🌙 Dark
+  </button>
+</div>
+
+
+    <!-- Description -->
+    <p class="text-blue-300 max-w-3xl mx-auto text-center leading-relaxed mb-12">
+      The Cummins College Alumni Portal bridges students and alumni, providing exclusive benefits, career guidance,
+      networking opportunities, and resources for academic, professional, and social growth.
+    </p>
+
+    <!-- Cards for benefits -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-gray-700 p-6 rounded-2xl shadow-lg hover:bg-gray-600 transition transform hover:-translate-y-1">
+        <h4 class="text-xl font-semibold text-white mb-2">🎓 Mentorship Programs</h4>
+        <p class="text-gray-300 text-sm">Connect with experienced alumni for career advice, academic guidance, and
+          industry insights.</p>
+      </div>
+
+      <div class="bg-gray-700 p-6 rounded-2xl shadow-lg hover:bg-gray-600 transition transform hover:-translate-y-1">
+        <h4 class="text-xl font-semibold text-white mb-2">💼 Career Opportunities</h4>
+        <p class="text-gray-300 text-sm">Access internships, job openings, and placement support shared by alumni
+          networks.</p>
+      </div>
+
+      <div class="bg-gray-700 p-6 rounded-2xl shadow-lg hover:bg-gray-600 transition transform hover:-translate-y-1">
+        <h4 class="text-xl font-semibold text-white mb-2">🌐 Networking Events</h4>
+        <p class="text-gray-300 text-sm">Participate in workshops, seminars, and alumni meetups to expand your
+          professional circle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    
+    <!-- Benefits for Students -->
     <section class="py-16">
-        <div class="container mx-auto">
-            <h3 class="text-3xl font-bold text-center mb-12">Benefits for Students</h3>
+        <div class="container mx-auto  bg-gray-700">
+            <h3 class="text-3xl text-blue-600 font-bold text-center mb-12">Benefits for CCOEW NAGPUR Students</h3>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
+                <div class="card bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
                     <h4 class="text-xl font-semibold mb-2">Mentorship Programs</h4>
                     <p class="text-gray-300">Connect with experienced alumni for guidance on career choices, internships, and academic growth.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
+                <div class="card bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
                     <h4 class="text-xl font-semibold mb-2">Workshops & Seminars</h4>
                     <p class="text-gray-300">Access exclusive workshops, webinars, and seminars organized by alumni and industry professionals.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
+                <div class="card bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
                     <h4 class="text-xl font-semibold mb-2">Networking Opportunities</h4>
                     <p class="text-gray-300">Build meaningful connections with alumni for guidance, references, and professional growth.</p>
                 </div>
@@ -32,17 +81,17 @@
     <!-- Benefits for Alumni -->
     <section class="bg-gray-800 py-16">
         <div class="container mx-auto">
-            <h3 class="text-3xl font-bold text-center mb-12">Benefits for Alumni</h3>
+            <h3 class="text-3xl  font-bold text-center mb-12">Benefits for CCOEW NAGPUR Alumni</h3>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gray-900 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
+                <div class="card bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
                     <h4 class="text-xl font-semibold mb-2">Career Opportunities</h4>
                     <p class="text-gray-300">Stay informed about job openings, projects, and collaborations through the alumni network.</p>
                 </div>
-                <div class="bg-gray-900 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
+                <div class="card bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
                     <h4 class="text-xl font-semibold mb-2">Stay Connected</h4>
                     <p class="text-gray-300">Reconnect with peers, batchmates, and faculty to maintain lifelong relationships and networks.</p>
                 </div>
-                <div class="bg-gray-900 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
+                <div class="card bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
                     <h4 class="text-xl font-semibold mb-2">Give Back</h4>
                     <p class="text-gray-300">Contribute to the college by mentoring, funding scholarships, or sharing industry insights with students.</p>
                 </div>
@@ -50,8 +99,6 @@
         </div>
     </section>
 
-    <!-- Call to Action -->
-   
     <!-- Footer -->
     <footer class="bg-gray-800 py-6 mt-12">
         <div class="container mx-auto text-center text-gray-400">
@@ -59,5 +106,63 @@
         </div>
     </footer>
 
+    <script>
+        const body = document.getElementById("page-body");
+        const toggleBtn = document.getElementById("theme-toggle");
+        const cards = document.querySelectorAll(".card");
+
+        // Default: Dark mode
+        if (localStorage.getItem("theme") === "light") {
+            setLightMode();
+        } else {
+            setDarkMode();
+        }
+
+        toggleBtn.addEventListener("click", () => {
+            if (body.classList.contains("bg-gray-900")) {
+                setLightMode();
+                localStorage.setItem("theme", "light");
+            } else {
+                setDarkMode();
+                localStorage.setItem("theme", "dark");
+            }
+        });
+
+        function setLightMode() {
+            body.classList.remove("bg-gray-900","text-gray-100");
+            body.classList.add("bg-white","text-gray-900");
+
+            cards.forEach(c => {
+                c.classList.remove("bg-gray-900","bg-gray-800");
+                c.classList.add("bg-white","border","border-gray-300");
+            });
+
+            document.querySelectorAll(".text-gray-100, .text-gray-200, .text-gray-300, .text-gray-400")
+              .forEach(el => {
+                  el.classList.remove("text-gray-100","text-gray-200","text-gray-300","text-gray-400");
+                  el.classList.add("text-gray-800");
+              });
+
+            toggleBtn.textContent = "☀️ Light";
+        }
+
+        function setDarkMode() {
+            body.classList.remove("bg-white","text-gray-900");
+            body.classList.add("bg-gray-900","text-gray-100");
+
+            cards.forEach(c => {
+                c.classList.remove("bg-white","border","border-gray-300");
+                c.classList.add("bg-gray-900");
+            });
+
+            document.querySelectorAll(".text-gray-800")
+              .forEach(el => {
+                  el.classList.remove("text-gray-800");
+                  el.classList.add("text-gray-300");
+              });
+
+            toggleBtn.textContent = "🌙 Dark";
+        }
+    </script>
 </body>
 </html>

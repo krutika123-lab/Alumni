@@ -7,7 +7,7 @@ const alumniSchema = new mongoose.Schema({
   email: { type: String, required: true },
   experience: { type: String },
   skills: { type: [String] },
-  image: { type: String, default: "https://via.placeholder.com/150" }
+  image: { type: String, default: "https://news.temple.edu/sites/news/files/shutterstock_531382432-scaled_0.jpg" }
 });
 
 module.exports = mongoose.model("Alumni", alumniSchema);
