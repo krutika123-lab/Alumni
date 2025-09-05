@@ -78,46 +78,6 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-/* ----------------------- Nodemailer (ONE transporter) ----------------------- */
-/*
-   Recommended (secure): Gmail with App Password
-   .env:
-     EMAIL_USER=yourgmail@gmail.com
-     EMAIL_PASS=your_16char_app_password
-
-   If you MUST use a corporate / self-signed SMTP,
-   set these (dev only):
-     SMTP_HOST=smtp.yourmailserver.com
-     SMTP_PORT=465
-     SMTP_SECURE=true
-     SMTP_REJECT_UNAUTHORIZED=false
-*/
-const mailTransporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST || "smtp.gmail.com",
-  port: process.env.SMTP_PORT ? Number(process.env.SMTP_PORT) : 465,
-  secure:
-    process.env.SMTP_SECURE !== undefined
-      ? process.env.SMTP_SECURE === "true"
-      : true, // true for 465
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  // Dev-friendly default to avoid "self-signed certificate" on some networks.
-  // For production, set SMTP_REJECT_UNAUTHORIZED=true in .env
-  tls: {
-    rejectUnauthorized:
-      process.env.SMTP_REJECT_UNAUTHORIZED !== undefined
-        ? process.env.SMTP_REJECT_UNAUTHORIZED === "true"
-        : false,
-  },
-});
-
-// Optional: log if transporter has issues at startup
-mailTransporter
-  .verify()
-  .then(() => console.log("Mail transporter is ready"))
-  .catch((e) => console.error("Mail transporter error:", e.message));
 
 /* ----------------------- Auth guard ----------------------- */
 const isLoggedIn = (req, res, next) => {
@@ -275,39 +235,6 @@ app.delete("/alumni/post/:id", isLoggedIn, async (req, res) => {
   res.redirect("/alumni/post");
 });
 
-/* --------- Send Email (always JSON; uses single transporter) --------- */
-app.post("/alumni/send-email", isLoggedIn, async (req, res) => {
-  try {
-    let { recipients, subject, message } = req.body;
-
-    // Normalize recipients
-    if (!Array.isArray(recipients)) {
-      recipients = typeof recipients === "string"
-        ? recipients.split(",").map(e => e.trim())
-        : [];
-    }
-    recipients = recipients.filter(Boolean);
-
-    if (!recipients.length) {
-      return res.status(400).json({ success: false, error: "No recipients provided" });
-    }
-
-    await mailTransporter.sendMail({
-      from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
-      to: recipients.join(","),
-      subject: subject || "Alumni Connection",
-      text: message || "",
-    });
-
-    return res.json({ success: true });
-  } catch (err) {
-    console.error("Email send error:", err);
-    return res.status(500).json({
-      success: false,
-      error: err.message || "MAIL_ERROR",
-    });
-  }
-});
 
 /* ----------------------- Misc ----------------------- */
 app.get("/alumni/donation", isLoggedIn, async (req, res) =>{
@@ -355,8 +282,6 @@ app.post("/alumni/event", isLoggedIn, upload.single("image"), async (req, res) =
     res.redirect("/alumni/event");
   }
 });
-
-
 
 // Start server
 app.listen(8080, () => {

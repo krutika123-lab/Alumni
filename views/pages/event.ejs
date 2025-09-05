@@ -107,12 +107,12 @@ html {
       <% [
         { title: "Annual Sports Meet", img: "https://cumminscollege.edu.in/app_theme/images/event4.jpg", desc: "Inter-departmental competitions across athletics, football, and basketball." },
         { title: "Tech Workshop Series", img: "https://cumminscollege.edu.in/UserData/uploads/pages/235/visite4.jpg", desc: "Hands-on sessions on AI, IoT, and robotics conducted on campus." },
-        { title: "Cultural Fest", img: "https://cumminscollege.edu.in/app_theme/images/lifetatcampus-5.jpeg", desc: "Dance, drama, and music night showcasing student talent." }
+        { title: "Cultural Fest", img: "https://cumminscollege.edu.in/UserData/uploads/album/umang/Umang%20(3).jpg", desc: "Dance, drama, and music night showcasing student talent." }
       ].forEach(card => { %>
         <article class="event-card rounded-2xl overflow-hidden border border-[var(--ring)]/40 bg-[var(--card)]">
           <img class="h-40 w-full object-cover" src="<%= card.img %>" alt="<%= card.title %>" />
           <div class="p-4">
-            <h4 class="event-title text-lg font-semibold"><%= card.title %></h4>
+            <h4 class="event-title text-lg text-white font-semibold"><%= card.title %></h4>
             <p class="event-desc text-sm text-[var(--muted)] mt-1"><%= card.desc %></p>
           </div>
         </article>
@@ -147,7 +147,7 @@ html {
   <div id="eventsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
     <% eevent.forEach(e => { %>
       <article 
-        class="event-card rounded-2xl overflow-hidden border border-[var(--ring)]/40 bg-[var(--card)]" 
+        class="event-card rounded-2xl text-white overflow-hidden border border-[var(--ring)]/40 bg-[var(--card)]" 
         data-title="<%= e.title.toLowerCase() %>" 
         data-desc="<%= e.description.toLowerCase() %>"
       >
@@ -239,7 +239,7 @@ html {
     </form>
   </section>
 
-  <footer class="container py-10 text-center text-sm text-[var(--muted)]">
+  <footer class="container py-1 text-center text-sm text-[var(--muted)]">
     © <%= new Date().getFullYear() %> Cummins College of Engineering, Nagpur. All rights reserved.
   </footer>
   

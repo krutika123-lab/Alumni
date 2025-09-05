@@ -4,92 +4,118 @@
 <body id="page-body" class="bg-gray-900 text-gray-100 font-sans transition-colors duration-500">
 
     <!-- Header with Toggle -->
-    <header id="header" class="bg-gray-800 p-4 flex justify-between items-center shadow-md transition-colors duration-500">
-        <h1 id="site-title" class="text-2xl font-bold text-purple-400">Cummins College,Nagpur-Alumni Portal-Career Portal</h1>
-        <button id="theme-toggle" class="px-3 py-1 rounded-lg border border-gray-600 text-sm">
-            🌙 Dark
-        </button>
+    <header id="header"
+      class="backdrop-blur-md bg-gray-800/70 p-4 flex justify-between items-center shadow-lg rounded-b-xl transition-colors duration-500">
+      <h1 id="site-title" class="text-xl sm:text-2xl font-bold text-fuchsia-400 drop-shadow-md">
+        Cummins College, Nagpur • Alumni Career Portal
+      </h1>
+      <button id="theme-toggle"
+        class="px-3 py-1 rounded-lg border border-gray-600 text-sm flex items-center gap-2 bg-gray-700/60 hover:bg-gray-600/80 transition">
+        🌙 Dark
+      </button>
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="bg-gray-800 py-10 text-center transition-colors duration-500">
-        <div class="container mx-auto">
-            <h2 id="hero-title" class="text-4xl font-bold mb-4  text-blue-600">Career Opportunities & Placements</h2>
-            <p id="hero-text" class="text-gray-300 max-w-2xl mx-auto">
-                Explore career guidance, placement updates, and higher education opportunities like M.Tech and GATE for students and alumni.
-            </p>
-        </div>
+    <section id="hero"
+      class="backdrop-blur-md bg-gray-800/70 py-12 text-center shadow-xl rounded-xl mx-4 mt-6 transition-colors duration-500">
+      <div class="container mx-auto">
+        <h2 id="hero-title"
+          class="text-4xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-400 via-indigo-300 to-blue-400 drop-shadow-lg">
+          Career Opportunities & Placements
+        </h2>
+        <p id="hero-text" class="text-gray-300 max-w-2xl mx-auto">
+          Explore career guidance, placement updates, and higher education opportunities like M.Tech and GATE for
+          students and alumni.
+        </p>
+      </div>
     </section>
 
     <!-- Career Opportunities -->
-    <section class="py-16">
-        <div class="container mx-auto">
-            <h3 id="career-title" class="text-3xl font-bold text-center mb-12">Career Opportunities</h3>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
-                    <h4 class="card-heading text-xl font-semibold mb-2">Job Openings</h4>
-                    <p class="card-text text-gray-300">Access curated job listings for alumni and current students from top companies in engineering, IT, and research.</p>
-                </div>
-                <div class="card bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
-                    <h4 class="card-heading text-xl font-semibold mb-2">Internships</h4>
-                    <p class="card-text text-gray-300">Find internship opportunities to gain practical experience and build a strong professional profile.</p>
-                </div>
-                <div class="card bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
-                    <h4 class="card-heading text-xl font-semibold mb-2">Alumni Mentorship</h4>
-                    <p class="card-text text-gray-300">Get career advice, resume reviews, and interview preparation tips from successful alumni.</p>
-                </div>
-            </div>
+    <section class="py-16 container mx-auto">
+      <h3 id="career-title" class="text-3xl font-bold text-center mb-12">Career Opportunities</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div
+          class="card p-6 rounded-2xl shadow-xl bg-gray-800/70 backdrop-blur-md hover:scale-105 hover:shadow-fuchsia-500/40 transition">
+          <h4 class="card-heading text-xl font-semibold mb-2">💼 Job Openings</h4>
+          <p class="card-text text-gray-300">Access curated job listings for alumni and current students from top
+            companies in engineering, IT, and research.</p>
         </div>
+        <div
+          class="card p-6 rounded-2xl shadow-xl bg-gray-800/70 backdrop-blur-md hover:scale-105 hover:shadow-indigo-400/40 transition">
+          <h4 class="card-heading text-xl font-semibold mb-2">🧑‍💻 Internships</h4>
+          <p class="card-text text-gray-300">Find internship opportunities to gain practical experience and build a
+            strong professional profile.</p>
+        </div>
+        <div
+          class="card p-6 rounded-2xl shadow-xl bg-gray-800/70 backdrop-blur-md hover:scale-105 hover:shadow-blue-400/40 transition">
+          <h4 class="card-heading text-xl font-semibold mb-2">🎓 Alumni Mentorship</h4>
+          <p class="card-text text-gray-300">Get career advice, resume reviews, and interview preparation tips from
+            successful alumni.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Placements -->
-    <section id="placements" class="bg-gray-800 py-16 transition-colors duration-500">
-        <div class="container mx-auto text-center">
-            <h3 class="text-3xl font-bold mb-12">Placements</h3>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card bg-gray-900 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
-                    <h4 class="card-heading text-xl font-semibold mb-2">Recent Placements</h4>
-                    <p class="card-text text-gray-300">Explore recent companies visiting the campus and students placed across top industries.</p>
-                </div>
-                <div class="card bg-gray-900 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
-                    <h4 class="card-heading text-xl font-semibold mb-2">Placement Stats</h4>
-                    <p class="card-text text-gray-300">View placement percentages, highest packages, and sector-wise statistics to help plan your career.</p>
-                </div>
-                <div class="card bg-gray-900 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
-                    <h4 class="card-heading text-xl font-semibold mb-2">Recruiters</h4>
-                    <p class="card-text text-gray-300">Connect with companies that have previously hired alumni and current students from Cummins College.</p>
-                </div>
-            </div>
+    <section id="placements"
+      class="backdrop-blur-md bg-gray-800/70 py-16 shadow-xl mx-4 rounded-xl transition-colors duration-500">
+      <div class="container mx-auto text-center">
+        <h3 class="text-3xl font-bold mb-12">Placements</h3>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="card p-6 rounded-2xl shadow-xl bg-gray-900/70 backdrop-blur-md hover:scale-105 hover:shadow-indigo-500/40 transition">
+            <h4 class="card-heading text-xl font-semibold mb-2">📊 Recent Placements</h4>
+            <p class="card-text text-gray-300">Explore recent companies visiting the campus and students placed across
+              top industries.</p>
+          </div>
+          <div
+            class="card p-6 rounded-2xl shadow-xl bg-gray-900/70 backdrop-blur-md hover:scale-105 hover:shadow-purple-500/40 transition">
+            <h4 class="card-heading text-xl font-semibold mb-2">📈 Placement Stats</h4>
+            <p class="card-text text-gray-300">View placement percentages, highest packages, and sector-wise statistics
+              to help plan your career.</p>
+          </div>
+          <div
+            class="card p-6 rounded-2xl shadow-xl bg-gray-900/70 backdrop-blur-md hover:scale-105 hover:shadow-pink-400/40 transition">
+            <h4 class="card-heading text-xl font-semibold mb-2">🏢 Recruiters</h4>
+            <p class="card-text text-gray-300">Connect with companies that have previously hired alumni and current
+              students from Cummins College.</p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Higher Education -->
-    <section class="py-16">
-        <div class="container mx-auto text-center">
-            <h3 id="education-title" class="text-3xl font-bold mb-12">Higher Education: M.Tech & GATE</h3>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
-                    <h4 class="card-heading text-xl font-semibold mb-2">GATE Preparation</h4>
-                    <p class="card-text text-gray-300">Resources, past papers, and guidance from alumni who have successfully cleared GATE in various streams.</p>
-                </div>
-                <div class="card bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
-                    <h4 class="card-heading text-xl font-semibold mb-2">M.Tech Guidance</h4>
-                    <p class="card-text text-gray-300">Advice on M.Tech specializations, colleges, and application strategies from experienced alumni.</p>
-                </div>
-                <div class="card bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition">
-                    <h4 class="card-heading text-xl font-semibold mb-2">Scholarships & Fellowships</h4>
-                    <p class="card-text text-gray-300">Information on scholarships and financial aid opportunities for higher education and research.</p>
-                </div>
-            </div>
+    <section class="py-16 container mx-auto">
+      <h3 id="education-title" class="text-3xl font-bold text-center mb-12">Higher Education: M.Tech & GATE</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div
+          class="card p-6 rounded-2xl shadow-xl bg-gray-800/70 backdrop-blur-md hover:scale-105 hover:shadow-green-400/40 transition">
+          <h4 class="card-heading text-xl font-semibold mb-2">📘 GATE Preparation</h4>
+          <p class="card-text text-gray-300">Resources, past papers, and guidance from alumni who have successfully
+            cleared GATE in various streams.</p>
         </div>
+        <div
+          class="card p-6 rounded-2xl shadow-xl bg-gray-800/70 backdrop-blur-md hover:scale-105 hover:shadow-yellow-400/40 transition">
+          <h4 class="card-heading text-xl font-semibold mb-2">📚 M.Tech Guidance</h4>
+          <p class="card-text text-gray-300">Advice on M.Tech specializations, colleges, and application strategies from
+            experienced alumni.</p>
+        </div>
+        <div
+          class="card p-6 rounded-2xl shadow-xl bg-gray-800/70 backdrop-blur-md hover:scale-105 hover:shadow-red-400/40 transition">
+          <h4 class="card-heading text-xl font-semibold mb-2">🎓 Scholarships & Fellowships</h4>
+          <p class="card-text text-gray-300">Information on scholarships and financial aid opportunities for higher
+            education and research.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
-    <footer id="footer" class="bg-gray-800 py-6 mt-12 transition-colors duration-500">
-        <div id="footer-text" class="container mx-auto text-center text-gray-400">
-            &copy; 2025 Cummins College of Engineering, Nagpur. All rights reserved.
-        </div>
+    <footer id="footer"
+      class="backdrop-blur-md bg-gray-800/70 py-6 mt-12 rounded-t-xl shadow-lg transition-colors duration-500">
+      <div id="footer-text" class="container mx-auto text-center text-gray-400">
+        &copy; 2025 Cummins College of Engineering, Nagpur. All rights reserved.
+      </div>
     </footer>
+  </div>
 
     <script>
         const body = document.getElementById("page-body");

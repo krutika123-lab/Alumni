@@ -1,3 +1,5 @@
+
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,55 +10,67 @@
 <body class="bg-gray-900 text-white ">
 
   <!-- Footer Section -->
-  <footer class="w-full bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white border-t border-gray-700 py-1 shadow-inner">
-    <div class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-2">
-      <h6 class="footer-title text-sm sm:text-base font-bold tracking-widest uppercase text-gray-300 hover:text-fuchsia-400 transition duration-300">
-        Follow us on
-      </h6>
+  <!-- Footer Section -->
+<footer class="w-full text-white border-t border-gray-700 py-4 shadow-inner bg-[url('https://cumminscollege.edu.in/UserData/logo-banner.png')] bg-cover bg-center relative">
+  <!-- Overlay for dark effect -->
+  <div class="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-800/80 to-gray-900/80"></div>
 
-      <!-- Instagram -->
-      <a href="https://www.instagram.com/ccoewnagpur/" target="_blank"
-        class="text-pink-500 hover:text-pink-400 hover:scale-125 hover:drop-shadow-[0_0_10px_rgba(236,72,153,0.8)] transition duration-300 text-xl transform">
-        <i class="fab fa-instagram"></i>
-      </a>
+  <div class="relative flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-2">
+    <h6 class="footer-title text-sm sm:text-base font-bold tracking-widest uppercase text-gray-300 hover:text-fuchsia-400 transition duration-300">
+      Follow us on
+    </h6>
 
-      <!-- Facebook -->
-      <a href="https://www.facebook.com/CCOEWNAGPUR/" target="_blank"
-        class="text-blue-600 hover:text-blue-400 hover:scale-125 hover:drop-shadow-[0_0_10px_rgba(59,130,246,0.8)] transition duration-300 text-xl transform">
-        <i class="fab fa-facebook"></i>
-      </a>
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/ccoewnagpur/" target="_blank"
+      class="text-pink-500 hover:text-pink-400 hover:scale-125 hover:drop-shadow-[0_0_10px_rgba(236,72,153,0.8)] transition duration-300 text-xl transform">
+      <i class="fab fa-instagram"></i>
+    </a>
 
-      <!-- Twitter Disabled -->
-      <span class="text-sky-500 opacity-50 cursor-not-allowed text-xl" title="Twitter account not found">
-        <i class="fab fa-twitter"></i>
-      </span>
-    </div>
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/CCOEWNAGPUR/" target="_blank"
+      class="text-blue-600 hover:text-blue-400 hover:scale-125 hover:drop-shadow-[0_0_10px_rgba(59,130,246,0.8)] transition duration-300 text-xl transform">
+      <i class="fab fa-facebook"></i>
+    </a>
 
-    <p class="text-gray-400 text-center text-xs mt-2 tracking-wide hover:text-fuchsia-400 transition duration-300">
-      © 2025 Cummins College of Engineering, Nagpur. All Rights Reserved.
-    </p>
-  </footer>
+    <!-- Twitter Disabled -->
+    <span class="text-sky-500 opacity-50 cursor-not-allowed text-xl" title="Twitter account not found">
+      <i class="fab fa-twitter"></i>
+    </span>
+  </div>
+
+  <p class="relative text-gray-400 text-center text-xs mt-2 tracking-wide hover:text-fuchsia-400 transition duration-300">
+    © 2025 Cummins College of Engineering, Nagpur. All Rights Reserved.
+  </p>
+</footer>
+
 </body>
 
   <!-- Navbar Section -->
   <nav class="w-full bg-gradient-to-r from-indigo-900 via-purple-900 to-fuchsia-900 shadow-lg sticky top-0 z-50">
-    <div class="container mx-auto flex items-center justify-between px-6 py-3">
+    <div class="container mx-auto flex items-center justify-between px-4 py-2">
 
       <!-- Logo + Title -->
       <div class="flex items-center space-x-3 group">
-        <!-- Cummins Logo -->
-        <div class="rounded-full shadow-lg transform transition duration-500 group-hover:scale-110 group-hover:shadow-fuchsia-500/50">
-          <img src="https://tse4.mm.bing.net/th/id/OIP.WVzFmEiC6arIgAtUlieFXAHaHa?pid=Api&P=0&h=180"
-            alt="Cummins Logo" class="h-20 w-20 rounded-full object-cover">
-        </div>
-        <!-- Portal Title -->
-        <h1
-          class="text-2xl sm:text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent 
-          bg-gradient-to-r from-fuchsia-400 via-indigo-300 to-blue-400 tracking-wide transition duration-500 
-          group-hover:from-pink-400 group-hover:via-purple-300 group-hover:to-cyan-400">
-          CCOEW Nagpur<br class="hidden sm:block"> Alumni Portal
-        </h1>
-      </div>
+  <!-- Cummins Logo -->
+  <div
+    class="rounded-full shadow-lg transform transition duration-500 group-hover:scale-110 group-hover:shadow-fuchsia-500/50">
+    <img src="https://tse4.mm.bing.net/th/id/OIP.WVzFmEiC6arIgAtUlieFXAHaHa?pid=Api&P=0&h=180"
+      alt="Cummins Logo" class="h-20 w-20 rounded-full object-cover">
+  </div>
+
+  <!-- Portal Title -->
+  <div>
+    <h1
+      class="text-2xl sm:text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent 
+      bg-gradient-to-r from-fuchsia-400 via-indigo-300 to-blue-400 tracking-wide transition duration-500 
+      group-hover:from-pink-400 group-hover:via-purple-300 group-hover:to-cyan-400">
+      CCOEW Nagpur<br class="hidden sm:block"> Alumni Portal
+    </h1>
+    <p class="text-sm sm:text-base text-gray-400 mt-1 tracking-wide">
+      Cummins College of Engineering, Nagpur
+    </p>
+  </div>
+</div>
 
       <!-- Nav Links -->
       <ul class="hidden md:flex space-x-8 font-medium">

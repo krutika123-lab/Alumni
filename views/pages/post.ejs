@@ -72,18 +72,7 @@
     </div>
   </section>
 
-  <!-- Email Section -->
-  <section class="p-6 bg-gray-800 mt-6 rounded-xl shadow-lg max-w-3xl mx-auto transition-colors duration-500">
-    <h2 class="text-xl font-semibold text-purple-300 mb-4">Send Email</h2>
-    <textarea id="studentEmails" placeholder="Enter student emails (comma separated)"
-      class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white mb-3"></textarea>
-    <textarea id="message" placeholder="Enter your message to alumni..."
-      class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white mb-3"></textarea>
-    <button id="sendEmailBtn"
-      class="w-full bg-green-600 hover:bg-green-500 p-3 rounded-lg font-semibold">Send Email to Selected Alumni</button>
-    <p id="emailStatus" class="text-sm mt-2 text-gray-300"></p>
-  </section>
-
+  
   <script>
     // Live search
     document.getElementById("searchInput").addEventListener("input", function () {
@@ -93,64 +82,7 @@
       });
     });
 
-    // Send Email
-    const btn = document.getElementById("sendEmailBtn");
-    const statusEl = document.getElementById("emailStatus");
-
-    btn.addEventListener("click", async () => {
-      const studentEmails = document.getElementById("studentEmails").value
-        .split(",").map(s => s.trim()).filter(Boolean);
-      const message = document.getElementById("message").value.trim();
-      const selectedAlumni = [...document.querySelectorAll("input[type=checkbox]:checked")]
-        .map(cb => cb.getAttribute("data-email"));
-
-      if (!selectedAlumni.length) return alert("Please select at least one alumni.");
-      if (!studentEmails.length) return alert("Please enter student emails.");
-      if (!message) return alert("Please enter a message to send.");
-
-      btn.disabled = true;
-      statusEl.textContent = "Sending...";
-
-      try {
-        const response = await fetch("/alumni/send-email", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "X-Requested-With": "XMLHttpRequest"
-          },
-          body: JSON.stringify({
-            recipients: [...studentEmails, ...selectedAlumni],
-            subject: "Alumni Connection",
-            message
-          })
-        });
-
-        const text = await response.text();
-        let data;
-        try { data = JSON.parse(text); } catch { data = null; }
-
-        if (response.status === 401) {
-          alert("Please log in to send emails.");
-          window.location.href = "/alumni/login";
-          return;
-        }
-
-        if (data && data.success) {
-          alert("✅ Email sent successfully!");
-          statusEl.textContent = "Delivered.";
-        } else {
-          const errMsg = (data && data.error) ? data.error : "Unexpected server response.";
-          alert("❌ Failed to send email: " + errMsg);
-          statusEl.textContent = errMsg;
-        }
-      } catch (err) {
-        alert("❌ Error: " + err.message);
-        statusEl.textContent = err.message;
-      } finally {
-        btn.disabled = false;
-      }
-    });
+   
 
     // --- Theme Toggle ---
     const body = document.getElementById("page-body");

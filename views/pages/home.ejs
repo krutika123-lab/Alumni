@@ -1,6 +1,46 @@
     
 <% layout("/layouts/boilerplate.ejs") %>
 
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="menu-btn"
+          class="text-gray-200 hover:text-white focus:outline-none text-2xl transition duration-300 transform hover:scale-125">
+          <i id="menu-icon" class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="menu" class="hidden flex-col space-y-4 px-6 pb-4 bg-gray-800 md:hidden">
+      <a class="text-gray-200 hover:text-fuchsia-400 hover:pl-3 transition duration-300" href="/alumni/home">Home</a>
+      <a class="text-gray-200 hover:text-fuchsia-400 hover:pl-3 transition duration-300" href="/alumni/career">Career</a>
+      <a class="text-gray-200 hover:text-fuchsia-400 hover:pl-3 transition duration-300" href="/alumni/events">Events</a>
+      <a class="text-gray-200 hover:text-fuchsia-400 hover:pl-3 transition duration-300" href="/alumni/benfits">Benefits</a>
+    </div>
+  </nav>
+
+  <script>
+    // Toggle mobile menu
+    const menuBtn = document.getElementById("menu-btn");
+    const menu = document.getElementById("menu");
+    const menuIcon = document.getElementById("menu-icon");
+
+    menuBtn.addEventListener("click", function () {
+      menu.classList.toggle("hidden");
+
+      // Toggle icon
+      if (menu.classList.contains("hidden")) {
+        menuIcon.classList.remove("fa-times");
+        menuIcon.classList.add("fa-bars");
+      } else {
+        menuIcon.classList.remove("fa-bars");
+        menuIcon.classList.add("fa-times");
+      }
+    });
+  </script>
+</body>
+
+
 <div class="h-screen w-full flex flex-row bg-gray-900 text-white transition-colors duration-500" id="pageWrapper">
   <!-- Sidebar -->
  <div class="bg-gray-800 w-1/6 h-full flex flex-col py-6 px-4 border-r border-gray-700 transition-colors duration-500" id="sidebar">
@@ -117,11 +157,11 @@
         </li>
         <li class="flex gap-3">
           <i class="fa-solid fa-circle-check mt-1.5 text-emerald-400"></i>
-          <span><span class="font-semibold text-gray-100">Get Started:</span> Use the <span class="text-indigo-400">Alumni Directory</span> and the <span class="text-fuchsia-400">Alumnae Membership Form</span> to join and stay updated.</span>
+          <span><span class="font-semibold text-gray-100">Get Started:</span> Use the <span class="text-indigo-400">Alumni Directory</span> and the <span class="text-fuchsia-400">Alumnae Post Form</span> to join and stay updated.</span>
         </li>
         <li class="flex gap-3">
           <i class="fa-solid fa-bullhorn mt-1.5 text-sky-400"></i>
-          <span>Portal includes updates, news and announcements for the alumni community.</span>
+          <span>Portal includes updates, news and announcements of new events held,connecting alumni,adding posts,works for donations for the alumni community.</span>
         </li>
       </ul>
     </article>
@@ -168,13 +208,9 @@
     </article>
   </section>
 </main>
-
-
-  
   </main>
 </body>
 </html>
-
 </div>
 </div>
 </div>
