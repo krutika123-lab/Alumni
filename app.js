@@ -20,6 +20,7 @@ const User = require("./models/user.js");
 const AAlumni = require("./models/alumni.js");
 const Donation=require("./models/donation.js");
 const EEvent = require("./models/studentEvent.js");
+const UUpcoming = require("./models/upcoming.js");
 const PORT = process.env.PORT || 8080;
 
 /* ----------------------- MongoDB ----------------------- */
@@ -251,6 +252,18 @@ app.post("/alumni/donation", isLoggedIn, async (req, res) => {
   res.redirect("/alumni/donation");
 });
 
+app.delete("/alumni/donation/:id", isLoggedIn, async (req, res) => {
+  try {
+    await Donation.findByIdAndDelete(req.params.id);
+    req.flash("success", "Donation request deleted successfully!");
+    res.redirect("/alumni/donation");
+  } catch (err) {
+    console.error(err);
+    req.flash("error", "Failed to delete donation request.");
+    res.redirect("/alumni/donation");
+  }
+});
+
 app.get("/alumni/event", isLoggedIn, async (req, res) => {
   try {
     // fetch all events from DB
@@ -283,6 +296,50 @@ app.post("/alumni/event", isLoggedIn, upload.single("image"), async (req, res) =
   }
 });
 
+app.get("/alumni/upcoming", isLoggedIn, async (req, res) => {
+  try {
+    // fetch all events from DB
+    const uupcoming = await UUpcoming.find({}).sort({ createdAt: -1 }).lean();
+    res.render("pages/upcoming", { uupcoming });  // ✅ matches event.ejs
+  } catch (err) {
+    console.error("Error fetching events:", err);
+    res.render("pages/upcoming", { uupcoming: [] });
+  }
+});
+
+app.post("/alumni/upcoming", isLoggedIn, upload.single("image"), async (req, res) => {
+  try {
+    const { title, date,clubName, description,fees, imageUrl } = req.body;
+
+    // pick uploaded file if exists, else fallback to provided URL
+    const image = req.file
+      ? `/uploads/${req.file.filename}`
+      : (imageUrl && imageUrl.trim()) || "https://via.placeholder.com/150";
+
+    // save to DB
+    await UUpcoming.create({  title, date,clubName, description,fees, image });
+
+    req.flash("success", "New Event Added!");
+    res.redirect("/alumni/upcoming");
+  } catch (err) {
+    console.error("Error adding event:", err);
+    req.flash("error", "Error adding event");
+    res.redirect("/alumni/upcoming");
+  }
+});
+
+
+// Delete
+app.delete("/alumni/upcoming/:id", isLoggedIn, async (req, res) => {
+  await UUpcoming.findByIdAndDelete(req.params.id);
+  req.flash("success", "Event deleted successfully!");
+  res.redirect("/alumni/upcoming");
+});
+app.delete("/alumni/event/:id", isLoggedIn, async (req, res) => {
+  await EEvent.findByIdAndDelete(req.params.id);
+  req.flash("success", "Event deleted successfully!");
+  res.redirect("/alumni/event");
+});
 // Start server
 app.listen(8080, () => {
   console.log("🚀 Server running at http://localhost:3000");
