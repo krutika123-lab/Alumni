@@ -30,24 +30,22 @@
 
   <style>
     :root {
-      --bg: #0b1220;      /* dark background */
+      --bg: #0b1220;
       --card: #111827;
       --muted: #93a2b1;
-      --text: #e5e7eb;    /* light text */
+      --text: #e5e7eb;
       --ring: #243b53;
     }
-
     :root[data-theme="light"] {
-      --bg: white;       /* white background */
-      --card: #f8fafc;     /* light card */
-      --muted: #475569;    /* dark gray for secondary text */
-      --text: #0f172a;     /* dark text so it stays visible */
+      --bg: white;
+      --card: #f8fafc;
+      --muted: #475569;
+      --text: #0f172a;
       --ring: #e2e8f0;
     }
-
     html {
       background: var(--bg);
-      color: var(--text);  /* ✅ ensures text always visible */
+      color: var(--text);
       transition: background 0.3s ease, color 0.3s ease;
     }
   </style>
@@ -72,15 +70,14 @@
     <div class="grid md:grid-cols-2 gap-6 items-center">
       <div>
         <h2 class="text-3xl md:text-4xl font-bold leading-tight">
-          Discover sports & academic energy at CCOEWE Nagpur
+          Discover New Mentorship Programs And Exciting Sessions By Alumni Of CCOEW Nagpur
         </h2>
         <p class="mt-3 text-[var(--muted)]">
-          From spirited sports meets to deep-dive workshops, symposiums, and hackathons — 
-          here’s what’s happening across our campus.
+         Visit here to ship in deep-dive workshops,exciting,informative lectures,sessions,meetings taken by alumni's of CCOEW Nagpur 
         </p>
         <div class="mt-6 flex gap-3 justify-center md:justify-start">
-          <a href="#student-events" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500">Student Events</a>
-          <a href="#new-event" class="px-4 py-2 rounded-xl border border-[var(--ring)]/60 hover:bg-[var(--card)]">Add an Event</a>
+          <a href="#student-events" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500">Alumni- Mentorship Events</a>
+          <a href="#new-event" class="px-4 py-2 rounded-xl border border-[var(--ring)]/60 hover:bg-[var(--card)]">Add Sesssions</a>
         </div>
       </div>
       <img
@@ -90,91 +87,52 @@
       />
     </div>
   </section>
-
-  <!-- Sports Events -->
-  <section class="container py-8 event-section">
-    <h3 class="text-2xl font-semibold mb-4">Events Highlights</h3>
-    <p class="text-[var(--muted)] mb-6">
-      Annual sports meet, inter-college tournaments, and fitness drives bring healthy competition to the campus.
-    </p>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <% [
-        { title: "Annual Sports Meet", img: "https://cumminscollege.edu.in/app_theme/images/event4.jpg", desc: "Inter-departmental competitions across athletics, football, and basketball." },
-        { title: "Tech Workshop Series", img: "https://cumminscollege.edu.in/UserData/uploads/pages/235/visite4.jpg", desc: "Hands-on sessions on AI, IoT, and robotics conducted on campus." },
-        { title: "Cultural Fest", img: "https://cumminscollege.edu.in/UserData/uploads/album/umang/Umang%20(3).jpg", desc: "Dance, drama, and music night showcasing student talent." }
-      ].forEach(card => { %>
-        <article class="event-card rounded-2xl overflow-hidden border border-[var(--ring)]/40 bg-[var(--card)]">
-          <img class="h-40 w-full object-cover cursor-pointer" src="<%= card.img %>" alt="<%= card.title %>" />
-          <div class="p-4">
-            <h4 class="event-title text-lg text-white font-semibold"><%= card.title %></h4>
-            <p class="event-desc text-sm text-[var(--muted)] mt-1"><%= card.desc %></p>
-          </div>
-        </article>
-      <% }) %>
+    <!-- Smart Search -->
+    <div class="mb-6">
+      <input 
+        type="text" 
+        id="studentEventSearch" 
+        placeholder="Search sessions by title or description,alumni name..." 
+        class="w-full sm:w-1/2 px-4 py-2 rounded-lg border border-[var(--ring)]/40 bg-[var(--card)] focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      />
     </div>
+
+    <% if (eevent && eevent.length) { %>
+      <div id="eventsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <% eevent.forEach(e => { %>
+          <article 
+            class="event-card rounded-2xl text-white overflow-hidden border border-[var(--ring)]/40 bg-[var(--card)] flex flex-col"
+            data-title="<%= e.title.toLowerCase() %>" 
+            data-desc="<%= e.description.toLowerCase() %>"
+          >
+            <img class="h-44 w-full object-cover cursor-pointer" src="<%= e.image %>" alt="<%= e.title %>"/>
+            <div class="p-4 flex-1 flex flex-col justify-between">
+              <div>
+                <h4 class="event-title text-lg font-semibold"><%= e.title %></h4>
+                <p class="text-xs text-[var(--muted)] mt-0.5">Added by <span class="font-medium"><%= e.studentName %></span></p>
+                <p class="event-desc text-sm text-[var(--muted)] mt-2"><%= e.description %></p>
+                <p class="event-desc text-sm text-[var(--muted)] mt-2"><%= e.link %></p>
+                <p class="event-desc text-sm text-[var(--muted)] mt-2"><%= e.date %></p>
+                <p class="event-desc text-sm text-[var(--muted)] mt-2"><%= e.time %></p>
+                <p class="text-[10px] text-[var(--muted)] mt-3">Posted <%= new Date(e.createdAt).toLocaleString() %></p>
+              </div>
+              <form action="/alumni/event/<%= e._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Delete this event?');" class="mt-3">
+                <button class="w-full px-3 py-2 text-sm rounded-lg bg-red-600 hover:bg-red-500">
+                  Delete
+                </button>
+              </form>
+            </div>
+          </article>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <p class="text-[var(--muted)]">No Alumni events yet. Be the first to add one!</p>
+    <% } %>
   </section>
 
-  <!-- Educational Events -->
-  <section class="container py-8 event-section">
-    <h3 class="text-2xl font-semibold mb-4">Educational Events</h3>
-    <p class="text-[var(--muted)] mb-6">
-      Workshops, guest lectures, paper presentations, and hackathons keep the learning momentum high.
-    </p>
-  
- <section id="student-events" class="container py-10 event-section">
-  <div class="flex items-center justify-between mb-4">
-    <h3 class="text-2xl font-semibold">Student-submitted Events</h3>
-    <a href="#new-event" class="text-sm px-3 py-2 rounded-lg border border-[var(--ring)]/50 hover:bg-[var(--card)]">Add New</a>
-  </div>
-
-  <!-- 🔍 Smart Search (for Student Events only) -->
-  <div class="mb-6">
-    <input 
-      type="text" 
-      id="studentEventSearch" 
-      placeholder="Search events by title or description..." 
-      class="w-full sm:w-1/2 px-4 py-2 rounded-lg border border-[var(--ring)]/40 bg-[var(--card)] focus:outline-none focus:ring-2 focus:ring-indigo-500"
-    />
-  </div>
-
-<% if (eevent && eevent.length) { %>
-  <div id="eventsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    <% eevent.forEach(e => { %>
-      <article 
-        class="event-card rounded-2xl text-white overflow-hidden border border-[var(--ring)]/40 bg-[var(--card)] flex flex-col"
-        data-title="<%= e.title.toLowerCase() %>" 
-        data-desc="<%= e.description.toLowerCase() %>"
-      >
-        <!-- Event Image -->
-        <img class="h-44 w-full object-cover cursor-pointer" src="<%= e.image %>" alt="<%= e.title %>"/>
-
-        <!-- Event Content -->
-        <div class="p-4 flex-1 flex flex-col justify-between">
-          <div>
-            <h4 class="event-title text-lg font-semibold"><%= e.title %></h4>
-            <p class="text-xs text-[var(--muted)] mt-0.5">Added by <span class="font-medium"><%= e.studentName %></span></p>
-            <p class="event-desc text-sm text-[var(--muted)] mt-2"><%= e.description %></p>
-            <p class="text-[10px] text-[var(--muted)] mt-3">Posted <%= new Date(e.createdAt).toLocaleString() %></p>
-          </div>
-
-          <!-- Delete Button -->
-          <form action="/alumni/event/<%= e._id %>?_method=DELETE" method="POST" 
-                onsubmit="return confirm('Delete this event?');" class="mt-3">
-            <button class="w-full px-3 py-2 text-sm rounded-lg bg-red-600 hover:bg-red-500">
-              Delete
-            </button>
-          </form>
-        </div>
-      </article>
-    <% }) %>
-  </div>
-<% } else { %>
-  <p class="text-[var(--muted)]">No student events yet. Be the first to add one!</p>
-<% } %>
-
-
+  <!-- New Event -->
   <section id="new-event" class="container py-10">
-    <h3 class="text-2xl font-semibold mb-4">Add an Event</h3>
+    <h3 class="text-2xl font-semibold mb-4">Add a Mentorship Session</h3>
     <form action="/alumni/event" method="POST" enctype="multipart/form-data"
       class="grid md:grid-cols-2 gap-6 bg-[var(--card)] p-6 rounded-2xl border border-[var(--ring)]/40">
       <div class="grid gap-4">
@@ -182,10 +140,10 @@
           <label class="block text-sm mb-1">Title</label>
           <input name="title" required maxlength="140"
             class="w-full px-3 py-2 rounded-xl border border-[var(--ring)]/50 bg-transparent outline-none"
-            placeholder="e.g., Arduino Bootcamp"/>
+            placeholder="e.g., Arduino Bootcamp, AI"/>
         </div>
         <div>
-          <label class="block text-sm mb-1">Student Name</label>
+          <label class="block text-sm mb-1">Alumni Name</label>
           <input name="studentName" required maxlength="100"
             class="w-full px-3 py-2 rounded-xl border border-[var(--ring)]/50 bg-transparent outline-none"
             placeholder="Your full name"/>
@@ -205,14 +163,14 @@
               file:bg-indigo-600 file:text-white hover:file:bg-indigo-500"/>
           <p class="text-xs text-[var(--muted)] mt-1">or paste an image URL below</p>
         </div>
-        <div>
-          <label class="block text-sm mb-1">Image URL</label>
-          <input name="imageUrl" type="url"
-            class="w-full px-3 py-2 rounded-xl border border-[var(--ring)]/50 bg-transparent outline-none"
-            placeholder="https://..."/>
-        </div>
+        <input type="text" name="link" placeholder="Session link (eg. Google Meet)"
+          class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-purple-500">
+        <input type="date" name="date" required
+          class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-purple-500">
+        <input type="text" name="time" placeholder="Enter time" required
+          class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-purple-500">
         <div class="flex items-end">
-          <button class="w-full px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500">Submit Event</button>
+          <button class="w-full px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500">Submit Mentorship Session</button>
         </div>
       </div>
     </form>
@@ -222,14 +180,14 @@
     © <%= new Date().getFullYear() %> Cummins College of Engineering, Nagpur. All rights reserved.
   </footer>
 
-  <!-- 🔍 Image Modal -->
+  <!-- Image Modal -->
   <div id="imageModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50">
     <span id="closeModal" class="absolute top-5 right-8 text-white text-3xl cursor-pointer">&times;</span>
     <img id="modalImage" class="max-h-[90%] max-w-[90%] rounded-xl shadow-lg" src="" alt="Enlarged view"/>
   </div>
   
   <script>
-    // ✅ Smart Search Function
+    // Smart Search
     document.getElementById("studentEventSearch").addEventListener("input", function () {
       const query = this.value.toLowerCase();
       const cards = document.querySelectorAll("#eventsGrid .event-card");
@@ -244,7 +202,7 @@
       });
     });
 
-    // ✅ Theme Toggle
+    // Theme Toggle
     const toggleBtn = document.getElementById("themeToggle");
     if (toggleBtn) {
       toggleBtn.addEventListener("click", () => {
@@ -256,25 +214,21 @@
       });
     }
 
-    // ✅ Image Modal Functionality
+    // Image Modal
     document.querySelectorAll(".event-card img, section img").forEach(img => {
       img.addEventListener("click", () => {
         document.getElementById("modalImage").src = img.src;
         document.getElementById("imageModal").classList.remove("hidden");
       });
     });
-
     document.getElementById("closeModal").addEventListener("click", () => {
       document.getElementById("imageModal").classList.add("hidden");
     });
-
     document.getElementById("imageModal").addEventListener("click", (e) => {
       if (e.target.id === "imageModal") {
         document.getElementById("imageModal").classList.add("hidden");
       }
     });
-
-    // Optional: Close modal with ESC key
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         document.getElementById("imageModal").classList.add("hidden");

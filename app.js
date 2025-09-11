@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
+const bodyParser = require("body-parser");
 const fs = require("fs");
 const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
@@ -15,12 +16,11 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const multer = require("multer");
 const nodemailer = require("nodemailer");
-
 const User = require("./models/user.js");
 const AAlumni = require("./models/alumni.js");
 const Donation=require("./models/donation.js");
 const EEvent = require("./models/studentEvent.js");
-const UUpcoming = require("./models/upcoming.js");
+const AAlumniview= require("./models/alumniview.js");
 const PORT = process.env.PORT || 8080;
 
 /* ----------------------- MongoDB ----------------------- */
@@ -157,7 +157,7 @@ app.get("/alumni/post", isLoggedIn, async (req, res) => {
 
 // create a new alumni post
 app.post("/alumni/post", isLoggedIn, upload.single("image"), async (req, res) => {
-  let { name, company, email, experience, skills } = req.body;
+  let { name, company, email, experience, skills,passout } = req.body;
   const image = req.file
     ? `/uploads/${req.file.filename}`
     : "https://via.placeholder.com/150";
@@ -168,7 +168,7 @@ app.post("/alumni/post", isLoggedIn, upload.single("image"), async (req, res) =>
     skills = [];
   }
 
-  const doc = new AAlumni({ name, company, email, experience, skills, image });
+  const doc = new AAlumni({ name, company, email, experience, skills,passout, image });
   await doc.save();
 
   req.flash("success", "New Alumni Post Created!");
@@ -202,7 +202,7 @@ app.put("/alumni/post/:id", isLoggedIn, upload.single("image"), async (req, res)
     return res.redirect("/alumni/post");
   }
 
-  let { name, company, email, experience, skills } = req.body;
+  let { name, company, email, experience, skills,passout } = req.body;
   if (skills) {
     skills = skills.split(",").map(s => s.trim()).filter(Boolean);
   } else {
@@ -212,7 +212,7 @@ app.put("/alumni/post/:id", isLoggedIn, upload.single("image"), async (req, res)
   const image = req.file ? `/uploads/${req.file.filename}` : post.image;
 
   await AAlumni.findByIdAndUpdate(id, {
-    name, company, email, experience, skills, image
+    name, company, email, experience, skills, image,passout
   });
 
   req.flash("success", "Post updated successfully!");
@@ -237,55 +237,105 @@ app.delete("/alumni/post/:id", isLoggedIn, async (req, res) => {
 });
 
 
-/* ----------------------- Misc ----------------------- */
-app.get("/alumni/donation", isLoggedIn, async (req, res) =>{
-  const donation = await Donation.find({});
-  res.render("pages/donation",{donation})
-});
-app.post("/alumni/donation", isLoggedIn, async (req, res) => {
-  let {  company, description,link,amount  } = req.body;
-  
-  const donn = new Donation({ company, description,link,amount });
-  await donn.save();
-
-  req.flash("success", "New Donation Link Added!");
-  res.redirect("/alumni/donation");
+app.get("/alumni/alumniview", async (req, res) => {
+  try {
+    const aalumniview = await AAlumniview.find().sort({ createdAt: -1 });
+    res.render("pages/alumniview", { posts: aalumniview });
+  } catch (err) {
+    req.flash("error","Dont Add Same UserName!!")
+  }
 });
 
+// POST route
+app.post("/alumni/alumniview", async (req, res) => {
+  try {
+    const { section, name, description } = req.body;
+    const newPost = new AAlumniview({ section, name, description });
+    await newPost.save();
+    res.redirect("/alumni/alumniview");
+  } catch (err) {
+   req.flash("error","Faild to add Suggestion!!")
+  }
+});
+
+// 📌 GET all donations
+app.get("/alumni/donation", isLoggedIn, async (req, res) => {
+  try {
+    const donation = await Donation.find({}).sort({ createdAt: -1 }).lean();
+    res.render("pages/donation", { donation });
+  } catch (err) {
+    console.error("Error fetching donations:", err);
+    req.flash("error", "Failed to load donations");
+    res.render("pages/donation", { donation: [] });
+  }
+});
+
+// 📌 POST new donation request
+app.post("/alumni/donation", isLoggedIn, upload.single("image"), async (req, res) => {
+  try {
+    const { studentName, description, amount, contact } = req.body;
+
+    // If file uploaded, use its path. Else fallback placeholder.
+    const image = req.file
+      ? `/uploads/${req.file.filename}`
+      : "https://via.placeholder.com/150";
+
+    const donn = new Donation({
+      studentName,
+      description,
+      amount,
+      contact,
+      image
+    });
+
+    await donn.save();
+
+    req.flash("success", "New Donation Request Added!");
+    res.redirect("/alumni/donation");
+  } catch (err) {
+    console.error("Error adding donation:", err);
+    req.flash("error", "Failed to add donation");
+    res.redirect("/alumni/donation");
+  }
+});
+
+// 📌 DELETE donation request
 app.delete("/alumni/donation/:id", isLoggedIn, async (req, res) => {
   try {
     await Donation.findByIdAndDelete(req.params.id);
     req.flash("success", "Donation request deleted successfully!");
     res.redirect("/alumni/donation");
   } catch (err) {
-    console.error(err);
+    console.error("Error deleting donation:", err);
     req.flash("error", "Failed to delete donation request.");
     res.redirect("/alumni/donation");
   }
 });
 
+
+// 📌 GET all events
 app.get("/alumni/event", isLoggedIn, async (req, res) => {
   try {
-    // fetch all events from DB
     const eevent = await EEvent.find({}).sort({ createdAt: -1 }).lean();
-    res.render("pages/event", { eevent });  // ✅ matches event.ejs
+    res.render("pages/event", { eevent });
   } catch (err) {
     console.error("Error fetching events:", err);
     res.render("pages/event", { eevent: [] });
   }
 });
 
+// 📌 POST new event
 app.post("/alumni/event", isLoggedIn, upload.single("image"), async (req, res) => {
   try {
-    const { title, studentName, description, imageUrl } = req.body;
+    const { title, studentName, description, date, time, link } = req.body;
 
-    // pick uploaded file if exists, else fallback to provided URL
+    // ✅ choose uploaded file or fallback placeholder
     const image = req.file
       ? `/uploads/${req.file.filename}`
-      : (imageUrl && imageUrl.trim()) || "https://via.placeholder.com/150";
+      : "https://via.placeholder.com/150";
 
-    // save to DB
-    await EEvent.create({ title, studentName, description, image });
+    // ✅ save to DB
+    await EEvent.create({ title, studentName, description, date, time, link, image });
 
     req.flash("success", "New Event Added!");
     res.redirect("/alumni/event");
@@ -296,50 +346,7 @@ app.post("/alumni/event", isLoggedIn, upload.single("image"), async (req, res) =
   }
 });
 
-app.get("/alumni/upcoming", isLoggedIn, async (req, res) => {
-  try {
-    // fetch all events from DB
-    const uupcoming = await UUpcoming.find({}).sort({ createdAt: -1 }).lean();
-    res.render("pages/upcoming", { uupcoming });  // ✅ matches event.ejs
-  } catch (err) {
-    console.error("Error fetching events:", err);
-    res.render("pages/upcoming", { uupcoming: [] });
-  }
-});
 
-app.post("/alumni/upcoming", isLoggedIn, upload.single("image"), async (req, res) => {
-  try {
-    const { title, date,clubName, description,fees, imageUrl } = req.body;
-
-    // pick uploaded file if exists, else fallback to provided URL
-    const image = req.file
-      ? `/uploads/${req.file.filename}`
-      : (imageUrl && imageUrl.trim()) || "https://via.placeholder.com/150";
-
-    // save to DB
-    await UUpcoming.create({  title, date,clubName, description,fees, image });
-
-    req.flash("success", "New Event Added!");
-    res.redirect("/alumni/upcoming");
-  } catch (err) {
-    console.error("Error adding event:", err);
-    req.flash("error", "Error adding event");
-    res.redirect("/alumni/upcoming");
-  }
-});
-
-
-// Delete
-app.delete("/alumni/upcoming/:id", isLoggedIn, async (req, res) => {
-  await UUpcoming.findByIdAndDelete(req.params.id);
-  req.flash("success", "Event deleted successfully!");
-  res.redirect("/alumni/upcoming");
-});
-app.delete("/alumni/event/:id", isLoggedIn, async (req, res) => {
-  await EEvent.findByIdAndDelete(req.params.id);
-  req.flash("success", "Event deleted successfully!");
-  res.redirect("/alumni/event");
-});
 // Start server
 app.listen(8080, () => {
   console.log("🚀 Server running at http://localhost:3000");
