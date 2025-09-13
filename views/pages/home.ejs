@@ -64,7 +64,14 @@
       </button>
     </a>
 
-  
+    <!-- Theme Toggle Button -->
+    <button id="themeToggle"
+      class="flex items-center gap-3 mt-6 px-4 py-3 rounded-lg bg-indigo-600 
+             hover:bg-gradient-to-r hover:from-indigo-600 hover:to-fuchsia-500 
+             hover:shadow-lg hover:shadow-fuchsia-500/40 
+             transition transform hover:scale-105 duration-300">
+      <i class="fa-solid fa-circle-half-stroke"></i> Toggle Theme
+    </button>
   </div>
 
   <!-- Main Content -->
@@ -179,6 +186,59 @@
     images[index].classList.add('active');
   }
   setInterval(showNextImage, 3000);
+</script>
+<script>
+  const toggleBtn = document.getElementById("themeToggle");
+  const pageWrapper = document.getElementById("pageWrapper");
+  const sidebar = document.getElementById("sidebar");
+  const heroCard = document.getElementById("heroCard");
+  const heroText = document.getElementById("heroText");
+  const tagBadge = document.getElementById("tagBadge");
+
+  let darkMode = true; // default theme
+
+  toggleBtn.addEventListener("click", () => {
+    darkMode = !darkMode;
+
+    if (darkMode) {
+      // 🌙 Dark Theme
+      pageWrapper.classList.remove("bg-white", "text-black");
+      pageWrapper.classList.add("bg-gray-900", "text-white");
+
+      sidebar.classList.remove("bg-gray-200", "border-gray-300");
+      sidebar.classList.add("bg-gray-800", "border-gray-700");
+
+      heroCard.classList.remove("bg-gradient-to-br", "from-slate-200/80", "to-slate-200/40", "shadow-lg");
+      heroCard.classList.add("bg-gradient-to-br", "from-slate-900/80", "to-slate-900/40", "shadow-xl");
+
+      heroText.classList.remove("text-gray-700");
+      heroText.classList.add("text-slate-300");
+
+      tagBadge.classList.remove("bg-slate-200/70", "text-slate-800", "ring-slate-300");
+      tagBadge.classList.add("bg-slate-800/70", "text-slate-200", "ring-slate-700");
+
+      toggleBtn.innerHTML = `<i class="fa-solid fa-circle-half-stroke"></i> Toggle Theme`;
+    } else {
+      // ☀️ Light Theme
+      pageWrapper.classList.remove("bg-gray-900", "text-white");
+      pageWrapper.classList.add("bg-white", "text-black");
+
+      sidebar.classList.remove("bg-gray-800", "border-gray-700");
+      sidebar.classList.add("bg-gray-200", "border-gray-300");
+
+      heroCard.classList.remove("bg-gradient-to-br", "from-slate-900/80", "to-slate-900/40", "shadow-xl");
+      heroCard.classList.add("bg-gradient-to-br", "from-slate-200/80", "to-slate-200/40", "shadow-lg");
+
+      heroText.classList.remove("text-slate-300");
+      heroText.classList.add("text-gray-700");
+
+      tagBadge.classList.remove("bg-slate-800/70", "text-slate-200", "ring-slate-700");
+      tagBadge.classList.add("bg-slate-200/70", "text-slate-800", "ring-slate-300");
+
+      toggleBtn.innerHTML = `<i class="fa-solid fa-sun"></i> Toggle Theme`;
+    }
+  });
+
 </script>
 
 <style>
