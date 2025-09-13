@@ -15,7 +15,6 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const multer = require("multer");
-const nodemailer = require("nodemailer");
 const User = require("./models/user.js");
 const AAlumni = require("./models/alumni.js");
 const Donation=require("./models/donation.js");
@@ -24,10 +23,22 @@ const AAlumniview= require("./models/alumniview.js");
 const PORT = process.env.PORT || 8080;
 
 /* ----------------------- MongoDB ----------------------- */
-mongoose
-  .connect("mongodb://127.0.0.1:27017/alumni")
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.error("Mongo error:", err));
+
+const MONGOURL = process.env.DB_URL;
+
+async function main() {
+  try {
+    await mongoose.connect(MONGOURL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("MongoDB Connected");
+  } catch (err) {
+    console.error(" MongoDB connection error:", err.message);
+  }
+}
+
+main();
 
 /* ----------------------- Express Core ----------------------- */
 app.engine("ejs", ejsMate);
@@ -46,7 +57,7 @@ fs.mkdirSync(uploadsDir, { recursive: true });
 
 /* ----------------------- Sessions / Auth ----------------------- */
 const sessionOptions = {
-  secret: "mysupercode",
+  secret:process.env.secretsession ,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -103,7 +114,7 @@ const isLoggedIn = (req, res, next) => {
 /* ----------------------- Routes ----------------------- */
 
 // signup
-app.get("/", (req, res) => res.render("pages/signup"));
+app.get("/", (req, res) => res.render("pages/allogin"));
 app.post("/", async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -117,6 +128,19 @@ app.post("/", async (req, res) => {
   }
 });
 
+app.get("/alumni/signup", (req, res) => res.render("pages/signup"));
+app.post("/alumni/signup", async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+    const user = new User({ username, email });
+    await User.register(user, password);
+    req.flash("success", "Signup successful! Please login.");
+    res.redirect("/alumni/login");
+  } catch (err) {
+    req.flash("error", err.message);
+    res.redirect("/");
+  }
+});
 // login
 app.get("/alumni/login", (req, res) => res.render("pages/login"));
 app.post(
@@ -125,19 +149,18 @@ app.post(
     failureRedirect: "/alumni/login",
     failureFlash: true,
   }),
-  (req, res) => res.redirect("/alumni/home")
+  (req, res) => {
+    // ✅ Add flash with username
+    req.flash("success", `Welcome to CCOEW Nagpur Alumni Portal, ${req.user.username}!`);
+    res.redirect("/alumni/home");
+  }
 );
 
-// logout
-app.get("/alumni/logout", (req, res) => {
-  req.logout(() => {
-    req.flash("success", "Logged out successfully!");
-    res.redirect("/alumni/login");
-  });
-});
-
 // protected pages
-app.get("/alumni/home", isLoggedIn, (req, res) => res.render("pages/home"));
+app.get("/alumni/home", isLoggedIn, (req, res) =>{
+  req.flash("success","Welcome!!");
+   res.render("pages/home")
+  });
 app.get("/alumni/about", isLoggedIn, (req, res) => res.render("pages/about"));
 app.get("/alumni/benfits", isLoggedIn, (req, res) =>
   res.render("pages/benfits")
@@ -345,10 +368,18 @@ app.post("/alumni/event", isLoggedIn, upload.single("image"), async (req, res) =
     res.redirect("/alumni/event");
   }
 });
-
+app.get("/alumni/gallary",isLoggedIn,(req,res)=>{
+  try{
+  req.flash("success","Welcome to CCOEW,Nagpur alumni Gallary!! ");
+  res.render("pages/gallary");
+  }
+  catch(err){
+    req.flash("error","Gallary Not Found!!")
+  }
+})
 
 // Start server
 app.listen(8080, () => {
-  console.log("🚀 Server running at http://localhost:3000");
+  console.log("server running successfully!!");
 });
 

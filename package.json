@@ -1,4 +1,7 @@
 {
+  "engines":{
+    "node":"22.12.0"
+  },
   "name": "alumni-portal",
   "version": "1.0.0",
   "main": "index.js",
@@ -13,7 +16,7 @@
     "bootstrap": "^5.3.5",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.7",
-    "dotenv": "^17.2.1",
+    "dotenv": "^17.2.2",
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",
     "express": "^5.1.0",

@@ -1,0 +1,97 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<body id="page-body" class="bg-gray-900 text-white transition duration-500">
+
+  <!-- Navbar -->
+  <header class="bg-gray-800/90 backdrop-blur-md shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-purple-400">📸CCOEW Nagpur Photo Gallery</h1>
+      <button id="toggleTheme" class="px-4 py-2 rounded bg-purple-600 hover:bg-purple-700 text-white transition">
+        🌙 Dark Mode
+      </button>
+    </div>
+  </header>
+
+  <!-- Gallery Section -->
+  <section class="max-w-6xl mx-auto px-6 py-12">
+    <h2 class="text-3xl font-bold text-center text-purple-300 mb-8">Some Memories at CCOEW Nagpur</h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <% const images = [
+        "https://tse1.mm.bing.net/th/id/OIP.m_prVm3u3eAexcBt9Oz5awHaE7?pid=Api&P=0&h=180",
+        "https://tse1.mm.bing.net/th/id/OIP.T1E1ut9YDqaJn1-HYSbTOwHaE8?pid=Api&P=0&h=180",
+        "https://tse4.mm.bing.net/th/id/OIP.XqgyCabsklZ-rWMPIAmorQHaHa?pid=Api&P=0&h=180",
+        "https://tse1.mm.bing.net/th/id/OIP.Im0fEQoCqBVmwQ-1nFcp0QHaHa?pid=Api&P=0&h=180",
+        "https://tse4.mm.bing.net/th/id/OIP.KqK-nCk0sYr4iHHlgJo0MgHaE8?pid=Api&P=0&h=180",
+        "https://tse2.mm.bing.net/th/id/OIP.kjTsjG0Yk76rj75_VdQRNgHaE8?pid=Api&P=0&h=180",
+        "https://tse4.mm.bing.net/th/id/OIP.8Uu2LsC6vYPxnD-4hMxd1QAAAA?pid=Api&P=0&h=180",
+        "https://universitykart.b-cdn.net/Content/upload/admin/zhooxasl.hex.jpg",
+        "https://universitykart.b-cdn.net/Content/upload/admin/c1tvtxcp.pq1.jpg",
+        "https://tse4.mm.bing.net/th/id/OIP.gCBoyC4Q65jClpwFgsLOzQHaE8?pid=Api&P=0&h=180",
+        "https://cumminscollege.edu.in/UserData/uploads/album/freshers-party/Fresher's%20Party%20.JPG",
+        "https://tse4.mm.bing.net/th/id/OIP.3P3bcPPXsBOAvvWHrNs9xgHaEK?pid=Api&P=0&h=180",
+        "https://www.nagpurtoday.in/wp-content/uploads/2023/03/DSC_5723-scaled.jpg",
+        "https://cumminscollege.edu.in/UserData/uploads/album/ananya/Ananya%202.JPG",
+        "https://cumminscollege.edu.in/UserData/uploads/album/sphurti/sphurti%204.JPG",
+        "https://cumminscollege.edu.in/UserData/uploads/album/ananya/Ananya%207.JPG",
+        "https://cumminscollege.edu.in/UserData/uploads/pages/207/3.jpg",
+        "https://cumminscollege.edu.in/UserData/uploads/pages/213/1.jpg",
+        "https://cumminscollege.edu.in/UserData/uploads/pages/207/5.jpg",
+        "https://cumminscollege.edu.in/UserData/uploads/pages/144/img-3.jpeg",
+        'https://cumminscollege.edu.in/UserData/uploads/pages/235/visite3.jpg',
+        "https://i.ytimg.com/vi/HUnISh-F7K8/maxresdefault.jpg",
+        "https://cumminscollege.edu.in/UserData/uploads/pages/235/visite1.jpg",
+        "https://cumminscollege.edu.in/UserData/uploads/slider/5.jpg",
+        "https://cumminscollege.edu.in/UserData/uploads/album/dahi-handi/Dahihandi.jpg",
+        "https://cumminscollege.edu.in/UserData/uploads/album/diwali.jpg",
+        "https://live.staticflickr.com/4682/39534405161_dc37b0a87c.jpg",
+        
+      ]; %>
+
+      <% images.forEach(img => { %>
+        <div class="overflow-hidden rounded-xl shadow-md border border-gray-700 cursor-pointer">
+          <img src="<%= img %>" alt="Gallery Image" 
+               class="w-full h-48 object-cover hover:scale-110 transition-transform duration-300"
+               onclick="openLightbox('<%= img %>')">
+        </div>
+      <% }) %>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="hidden fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
+    <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white text-3xl font-bold">✖</button>
+    <img id="lightbox-img" src="" alt="Full View" class="max-h-[90%] max-w-[90%] rounded-lg shadow-lg">
+  </div>
+
+  <!-- Script for Dark/Light Mode + Lightbox -->
+  <script>
+    // Dark/Light toggle
+    const btn = document.getElementById("toggleTheme");
+    const body = document.getElementById("page-body");
+    let dark = true;
+
+    btn.addEventListener("click", () => {
+      dark = !dark;
+      if (dark) {
+        body.classList.remove("bg-white", "text-black");
+        body.classList.add("bg-gray-900", "text-white");
+        btn.textContent = "🌙 Dark Mode";
+      } else {
+        body.classList.remove("bg-gray-900", "text-white");
+        body.classList.add("bg-white", "text-black");
+        btn.textContent = "☀️ Light Mode";
+      }
+    });
+
+    // Lightbox
+    function openLightbox(src) {
+      document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox").classList.remove("hidden");
+    }
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.add("hidden");
+    }
+  </script>
+</body>
+</html>

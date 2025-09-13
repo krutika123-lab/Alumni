@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Student Portal — Login</title>
+
 <style>
   :root{
     --bg:#0f1115;
@@ -187,27 +182,33 @@
 
     <!-- Left: Login -->
     <section class="left">
-     <header>
-        <div class="title">Signup:Student</div><br>
-        <div class="row" style="margin-top:4px">
-        <span class="muted">If you're alumni?</span>
-        <a class="ghost" href="/">Signup here!</a>
+      <header>
+        <div class="title">Signup:Alumni</div><br>
+        <div class="row" style="margin-top:1px">
+        <span class="muted">If you're student?</span>
+        <a class="ghost" href="/alumni/signup">Signup here!</a>
       </div>
       
       </header>
 
-      <form action="/alumni/signup" method="POST" id="signupForm" autocomplete="on" novalidate>
+      <form action="/" method="POST" id="signupForm" autocomplete="on" novalidate>
   <div class="field">
-    <label for="username">Enter Username</label>
+    <label for="username">Enter Alumni Name</label>
     <div class="control">
       <input id="username" name="username" type="text" required placeholder="username" />
     </div>
   </div>
 
   <div class="field">
-    <label for="email">Enter Email</label>
+    <label for="email">Enter Alumni Email</label>
     <div class="control">
       <input id="email" name="email" type="email" required placeholder="email" />
+    </div>
+  </div>
+  <div class="field">
+    <label for="passout">Passout Year</label>
+    <div class="control">
+      <input id="passout" name="passout" type="passout" required placeholder="passout year" />
     </div>
   </div>
 
@@ -222,7 +223,7 @@
 </form>
 
 
-      <div class="row" style="margin-top:6px">
+      <div class="row" style="margin-top:5px">
         <span class="muted">If have an account?</span>
         <a class="ghost" href="/alumni/login">Log in</a>
       </div>
