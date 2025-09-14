@@ -21,6 +21,8 @@ const Donation=require("./models/donation.js");
 const EEvent = require("./models/studentEvent.js");
 const AAlumniview= require("./models/alumniview.js");
 const PORT = process.env.PORT || 3000;
+app.use(methodOverride("_method"));
+
 
 /* ----------------------- MongoDB ----------------------- */
 
