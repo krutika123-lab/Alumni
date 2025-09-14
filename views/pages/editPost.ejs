@@ -15,8 +15,7 @@
          class="w-full p-2 rounded bg-gray-700 text-white">
   <input type="text" name="skills" value="<%= post.skills.join(', ') %>"
          class="w-full p-2 rounded bg-gray-700 text-white">
-  <input type="text" name="passout" value="<%= post.passout.join(', ') %>"
-         class="w-full p-2 rounded bg-gray-700 text-white">
+ <input type="text" name="passout" value="<%= post.passout || '' %>">
   <p class="text-sm text-gray-300">Current Image:</p>
   <img src="<%= post.image %>" class="w-24 h-24 rounded-full mb-2">
   <input type="file" name="image" accept="image/*">

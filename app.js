@@ -20,7 +20,7 @@ const AAlumni = require("./models/alumni.js");
 const Donation=require("./models/donation.js");
 const EEvent = require("./models/studentEvent.js");
 const AAlumniview= require("./models/alumniview.js");
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 /* ----------------------- MongoDB ----------------------- */
 
@@ -378,8 +378,6 @@ app.get("/alumni/gallary",isLoggedIn,(req,res)=>{
   }
 })
 
-// Start server
-app.listen(8080, () => {
-  console.log("server running successfully!!");
-});
+app.listen(PORT, () => console.log(`✅ Server running on ${PORT}`));
+;
 
