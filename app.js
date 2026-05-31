@@ -115,7 +115,6 @@ const isLoggedIn = (req, res, next) => {
 
 /* ----------------------- Routes ----------------------- */
 
-// signup
 app.get("/", (req, res) => res.render("pages/allogin"));
 app.post("/", async (req, res) => {
   try {
